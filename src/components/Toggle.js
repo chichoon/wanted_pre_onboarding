@@ -17,10 +17,8 @@ const Toggle = ({ firstString, secondString, setFunc }) => {
     <ToggleWrapper toggle={ifToggle}>
       <div className="selector-parent" onClick={handleOnClick}>
         <div className="front">
-          <SelectorWrapper>
-            <div className={!ifToggle ? ' selected' : ''}>{firstString}</div>
-            <div className={ifToggle ? ' selected' : ''}>{secondString}</div>
-          </SelectorWrapper>
+          <div className={!ifToggle ? ' selected' : ''}>{firstString}</div>
+          <div className={ifToggle ? ' selected' : ''}>{secondString}</div>
         </div>
         <div className="back">
           <div></div>
@@ -41,7 +39,7 @@ const ToggleWrapper = Styled.div`
   display: flex;
 
   .selector-parent {
-	position: relative;
+    position: relative;
     z-index: 3;
 
     & > div {
@@ -50,8 +48,8 @@ const ToggleWrapper = Styled.div`
 
       position: absolute;
       left: 0px;
-	  top: 0px;
-	}
+      top: 0px;
+    }
 
     .back {
       z-index: 1;
@@ -60,41 +58,36 @@ const ToggleWrapper = Styled.div`
         height: 3rem;
 
         border-radius: 2rem;
+        margin-left: ${props => (props.toggle ? '10rem' : '0')};
 
         background-color: white;
-		margin-left: ${props => (props.toggle ? '10rem' : '0')};
-		transition: margin-left 0.2s;
-	  }
+        transition: margin-left 0.2s;
+      }
     }
 
     .front {
       z-index: 2;
+
+      display: flex;
+      flex-direction: row;
+
+      & > div {
+        width: 50%;
+        height: inherit;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.selected {
+          font-weight: 700;
+        }
+      }
     }
-  }
 
-  &:hover {
-	  cursor: pointer;
-  }
-`;
-
-const SelectorWrapper = Styled.div`
-  width: 100%;
-  height: inherit;
-
-  display: flex;
-  flex-direction: row;
-
-  div {
-  width: 50%;
-  height: inherit;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &.selected {
-    font-weight: 700;
-  }
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export default Toggle;
