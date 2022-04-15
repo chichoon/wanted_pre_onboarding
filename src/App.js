@@ -1,9 +1,14 @@
 import "./App.css";
+import { Dropdown, Input, Slider, Tab, Toggle } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <div>hello</div>
+      <Toggle />
+      <Tab />
+      <Slider />
+      <Input />
+      <Dropdown />
     </div>
   );
 }
