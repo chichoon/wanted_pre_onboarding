@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Styled from 'styled-components';
 
-const Tab = ({ selectorArr }) => {
+const Tab = ({ selectorArr, setFunc }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleOnClick = (e, index) => {
     e.preventDefault();
     setSelectedIndex(index);
   };
+
+  useEffect(() => {
+    setFunc([selectorArr[selectedIndex]]);
+  }, [selectedIndex]);
 
   return (
     <TabWrapper>
