@@ -15,7 +15,7 @@ const Tab = ({ selectorArr, setFunc }) => {
   }, [selectedIndex]);
 
   return (
-    <TabWrapper>
+    <TabWrapper length={selectorArr.length} index={selectedIndex}>
       <div>
         {selectorArr.map((v, i) => (
           <SelectorDiv
@@ -28,9 +28,9 @@ const Tab = ({ selectorArr, setFunc }) => {
           </SelectorDiv>
         ))}
       </div>
-      <TabBottomDiv length={selectorArr.length} index={selectedIndex}>
+      <div>
         <div></div>
-      </TabBottomDiv>
+      </div>
     </TabWrapper>
   );
 };
@@ -55,6 +55,24 @@ const TabWrapper = Styled.div`
 
     display: flex;
     flex-direction: row;
+    justify-content: center;
+  }
+
+  & > div:nth-child(2) {
+    height: 0.3rem;
+
+    background-color: lightgray;
+
+    div {
+      width: calc(24rem / ${props => props.length});
+      height: 0.3rem;
+
+      margin-left: calc(0.5rem + 24rem * ${props =>
+        props.index / props.length});
+
+      background-color: teal;
+      transition: margin-left 0.2s;
+    }
   }
 
 `;
@@ -64,30 +82,17 @@ const SelectorDiv = Styled.div`
 
   margin-bottom: 0.3rem;
   background-color: white;
+  color: rgba(0, 0, 0, 0.3);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  transition: font-weight 0.2s;
+  font-weight: 700;
+  transition: color 0.2s;
+
   &.selected {
-    font-weight: 700;
-  }
-`;
-
-const TabBottomDiv = Styled.div`
-  height: 0.3rem;
-
-  background-color: lightgray;
-
-  div {
-    width: calc(24rem / ${props => props.length});
-    height: 0.3rem;
-
-    margin-left: calc(0.5rem + 24rem * ${props => props.index / props.length});
-
-    background-color: teal;
-    transition: margin-left 0.2s;
+    color: rgba(0, 0, 0, 1);
   }
 `;
 
