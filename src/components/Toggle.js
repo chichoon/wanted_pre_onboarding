@@ -17,8 +17,8 @@ const Toggle = ({ firstString, secondString, setFunc }) => {
     <ToggleWrapper toggle={ifToggle}>
       <div className="selector-parent" onClick={handleOnClick}>
         <div className="front">
-          <div className={!ifToggle ? ' selected' : ''}>{firstString}</div>
-          <div className={ifToggle ? ' selected' : ''}>{secondString}</div>
+          <div className={!ifToggle ? 'selected' : ''}>{firstString}</div>
+          <div className={ifToggle ? 'selected' : ''}>{secondString}</div>
         </div>
         <div className="back">
           <div></div>
