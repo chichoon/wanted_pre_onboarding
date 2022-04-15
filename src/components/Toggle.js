@@ -1,13 +1,17 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import Styled from 'styled-components';
 
-const Toggle = ({ firstString, secondString }) => {
+const Toggle = ({ firstString, secondString, setFunc }) => {
   const [ifToggle, setIfToggle] = useState(false);
 
   const handleOnClick = e => {
     e.preventDefault();
     setIfToggle(ifToggle ? false : true);
   };
+
+  useEffect(() => {
+    setFunc(ifToggle ? secondString : firstString);
+  }, [ifToggle]);
 
   return (
     <ToggleWrapper toggle={ifToggle}>
