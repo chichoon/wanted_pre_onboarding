@@ -117,15 +117,17 @@ useEffect(
 
 - 애니메이션 효과를 주기 위해 몇 개의 `div`를 추가하였습니다
 
-  - `className`이 `front`, `back`인 `div`는 서로 다른 `z-index`를 가진 `absolute` 컴포넌트입니다.
+  - `selector-parent`는 `front`, `back` 요소를 감싸며, 두 `div`의 부모 요소이므로 `position`을 `relative` 로 설정하여 하위 컴포넌트가 겹칠 수 있도록 해 줍니다. 또한 이 요소를 클릭하면 Toggle이 동작할 수 있도록 `onClick` 핸들러를 추가합니다.
 
-  - `absolute` 컴포넌트의 위치는 부모 컴포넌트 (`position`: `relative`로 지정합니다) 를 기준으로 움직입니다.
+  - `className`이 `front`, `back`인 `div`는 서로 다른 `z-index`를 가진 `absolute` 요소입니다.
 
-  - 또한 `absolute` 컴포넌트에는 `z-index`를 주어 어느 요소가 앞에 표시될지 조정할 수 있습니다.
+  - `absolute` 요소의 위치는 부모 요소 (`position`: `relative`로 지정합니다) 를 기준으로 움직입니다.
+
+  - 또한 `absolute` 요소에는 `z-index`를 주어 어느 요소가 앞에 표시될지 조정할 수 있습니다.
 
   - `z-index`를 이용하여 항목의 이름 (문자열) 이 표시되는 `div` (`front`) 와 슬라이더가 움직이는 `div` (`back`) 를 앞뒤로 분리하고, 서로 겹치도록 설정해 주었습니다
 
-- 두 개의 겹치는 `div`는 부모와 같은 너비와 높이를 가지며, 기본 위치는 부모 컴포넌트 기준 `left 0px`, `top 0px`으로 설정하였습니다.
+- 두 개의 겹치는 `div`는 부모와 같은 너비와 높이를 가지며, 기본 위치는 부모 요소 기준 `left 0px`, `top 0px`으로 설정하였습니다.
 
 - `front` 클래스의 `div`는 항목 문자열이 담긴 `div`를 감싸주며, 두 개의 겹치는 `div` 중 앞에 보여지는 `div`입니다. (`z-index`: 2)
 
