@@ -16,23 +16,21 @@ const Tab = ({ selectorArr, setFunc }) => {
 
   return (
     <TabWrapper>
-      <div className="selector-parent">
-        <div className="front">
-          {selectorArr.map((v, i) => (
-            <SelectorFrontDiv
-              className={selectedIndex === i ? 'selected' : ''}
-              key={i}
-              onClick={e => handleOnClick(e, i)}
-              length={selectorArr.length}
-            >
-              {selectorArr[i]}
-            </SelectorFrontDiv>
-          ))}
-        </div>
-        <div className="back">
-          <SelectorBackDiv length={selectorArr.length} index={selectedIndex} />
-        </div>
+      <div>
+        {selectorArr.map((v, i) => (
+          <SelectorDiv
+            className={selectedIndex === i ? 'selected' : ''}
+            key={i}
+            onClick={e => handleOnClick(e, i)}
+            length={selectorArr.length}
+          >
+            {selectorArr[i]}
+          </SelectorDiv>
+        ))}
       </div>
+      <TabBottomDiv length={selectorArr.length} index={selectedIndex}>
+        <div></div>
+      </TabBottomDiv>
     </TabWrapper>
   );
 };
@@ -42,46 +40,26 @@ const TabWrapper = Styled.div`
   height: 3rem;
 
   padding: 0.3rem;
-  background-color: white;
 
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
-  .selector-parent {
+  & > div {
     width: 25rem;
-
-    position: relative;
-    z-index: 3;
-
-    & > div {
-      width: 25rem;
-
-      position: absolute;
-      left: 0px;
-      top: 0px;
-    }
-
-    .front {
-      height: 2.7rem;
-
-      z-index: 2;
-
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-
-      background-color: white;
-    }
-
-    .back {
-      height: 3rem;
-      z-index: 1;
-      background-color: lightgray;
-    }
   }
+
+  & > div:nth-child(1){
+    height: 2.7rem;
+
+    display: flex;
+    flex-direction: row;
+  }
+
 `;
 
-const SelectorFrontDiv = Styled.div`
+const SelectorDiv = Styled.div`
   width: calc(24rem / ${props => props.length});
 
   margin-bottom: 0.3rem;
@@ -97,14 +75,20 @@ const SelectorFrontDiv = Styled.div`
   }
 `;
 
-const SelectorBackDiv = Styled.div`
-width: calc(24rem / ${props => props.length});
-height: 3rem;
+const TabBottomDiv = Styled.div`
+  height: 0.3rem;
 
-margin-left: calc(0.5rem + 24rem * ${props => props.index / props.length});
+  background-color: lightgray;
 
-background-color: teal;
-transition: margin-left 0.2s;
+  div {
+    width: calc(24rem / ${props => props.length});
+    height: 0.3rem;
+
+    margin-left: calc(0.5rem + 24rem * ${props => props.index / props.length});
+
+    background-color: teal;
+    transition: margin-left 0.2s;
+  }
 `;
 
 export default Tab;
