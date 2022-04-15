@@ -12,14 +12,14 @@ const Toggle = ({ firstString, secondString }) => {
   return (
     <ToggleWrapper toggle={ifToggle}>
       <div className="selector-parent" onClick={handleOnClick}>
-        <div className="selector front">
+        <div className="front">
           <SelectorWrapper>
             <div className={!ifToggle ? ' selected' : ''}>{firstString}</div>
             <div className={ifToggle ? ' selected' : ''}>{secondString}</div>
           </SelectorWrapper>
         </div>
-        <div className="selector back">
-          <div className="toggle-white"></div>
+        <div className="back">
+          <div></div>
         </div>
       </div>
     </ToggleWrapper>
@@ -40,7 +40,7 @@ const ToggleWrapper = Styled.div`
 	position: relative;
     z-index: 3;
 
-    .selector {
+    & > div {
       width: 20rem;
       height: 3rem;
 
@@ -51,7 +51,7 @@ const ToggleWrapper = Styled.div`
 
     .back {
       z-index: 1;
-      .toggle-white {
+      & > div {
         width: 50%;
         height: 3rem;
 
