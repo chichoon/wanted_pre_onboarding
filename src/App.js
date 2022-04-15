@@ -7,6 +7,7 @@ import './App.css';
 
 function App() {
   const [toggleSelected, setToggleSelected] = useState('');
+  const [tabSelected, setTabSelected] = useState('');
 
   return (
     <div className="App">
@@ -18,7 +19,13 @@ function App() {
         />
         <div>Selected: {toggleSelected}</div>
       </ComponentWrapper>
-      <Tab selectorArr={['감자', '고구마', '카레라이스']} />
+      <ComponentWrapper>
+        <Tab
+          selectorArr={['감자', '고구마', '카레라이스']}
+          setFunc={setTabSelected}
+        />
+        <div>Selected: {tabSelected}</div>
+      </ComponentWrapper>
       <Slider />
       <Input />
       <Dropdown />
