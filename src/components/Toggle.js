@@ -58,13 +58,18 @@ const ToggleWrapper = Styled.div`
         border-radius: 2rem;
 
         background-color: white;
-		margin-left: ${props => (props.toggle ? '10rem' : '0')}
+		margin-left: ${props => (props.toggle ? '10rem' : '0')};
+		transition: margin-left 0.2s;
 	  }
     }
 
     .front {
       z-index: 2;
     }
+  }
+
+  &:hover {
+	  cursor: pointer;
   }
 `;
 
@@ -85,10 +90,6 @@ const SelectorWrapper = Styled.div`
 
   &.selected {
     font-weight: 700;
-  }
-
-  &:not(.selected):hover {
-    cursor: pointer;
   }
 `;
 
