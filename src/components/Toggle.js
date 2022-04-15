@@ -35,7 +35,7 @@ const ToggleWrapper = Styled.div`
   padding: 0.2rem;
   border-radius: 2rem;
 
-  background: lightgray;
+  background-color: lightgray;
 
   .selector-parent {
     position: relative;
