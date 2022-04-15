@@ -2,26 +2,25 @@ import { React, useState } from 'react';
 import Styled from 'styled-components';
 
 const Toggle = ({ firstString, secondString }) => {
-  const [clickedSect, setClickedSect] = useState(0);
+  const [ifToggle, setIfToggle] = useState(false);
 
-  const handleOnClick = (e, clickedDivNum) => {
+  const handleOnClick = e => {
     e.preventDefault();
-    setClickedSect(clickedDivNum === 0 ? 0 : 1);
+    setIfToggle(ifToggle ? false : true);
   };
 
   return (
-    <ToggleWrapper>
-      <div
-        className={'first-element' + (clickedSect === 0 ? ' selected' : '')}
-        onClick={e => handleOnClick(e, 0)}
-      >
-        {firstString}
-      </div>
-      <div
-        className={'second-element' + (clickedSect === 1 ? ' selected' : '')}
-        onClick={e => handleOnClick(e, 1)}
-      >
-        {secondString}
+    <ToggleWrapper toggle={ifToggle}>
+      <div className="selector-parent" onClick={handleOnClick}>
+        <div className="selector front">
+          <SelectorWrapper>
+            <div className={!ifToggle ? ' selected' : ''}>{firstString}</div>
+            <div className={ifToggle ? ' selected' : ''}>{secondString}</div>
+          </SelectorWrapper>
+        </div>
+        <div className="selector back">
+          <div className="toggle-white"></div>
+        </div>
       </div>
     </ToggleWrapper>
   );
@@ -30,34 +29,67 @@ const Toggle = ({ firstString, secondString }) => {
 const ToggleWrapper = Styled.div`
   width: 20rem;
   height: 3rem;
-  border-radius: 2rem;
 
   padding: 0.2rem;
+  border-radius: 2rem;
+
+  background: lightgray;
+  display: flex;
+
+  .selector-parent {
+	position: relative;
+    z-index: 3;
+
+    .selector {
+      width: 20rem;
+      height: 3rem;
+
+      position: absolute;
+      left: 0px;
+	  top: 0px;
+	}
+
+    .back {
+      z-index: 1;
+      .toggle-white {
+        width: 50%;
+        height: 3rem;
+
+        border-radius: 2rem;
+
+        background-color: white;
+		margin-left: ${props => (props.toggle ? '10rem' : '0')}
+	  }
+    }
+
+    .front {
+      z-index: 2;
+    }
+  }
+`;
+
+const SelectorWrapper = Styled.div`
+  width: 100%;
+  height: inherit;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-
-  background: lightgray;
 
   div {
-    width: 50%;
-    border-radius: 2rem;
+  width: 50%;
+  height: inherit;
 
-	display: flex;
-    align-items: center;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  &.selected {
+    font-weight: 700;
   }
-  .selected {
-    background-color: white;
-	font-weight: 700;
-	transition: max-width 0.3s ease-out;
-  }
-  div:not(.selected):hover {
+
+  &:not(.selected):hover {
     cursor: pointer;
   }
-
 `;
 
 export default Toggle;
