@@ -18,7 +18,7 @@ function App() {
         />
         <div>Selected: {toggleSelected}</div>
       </ComponentWrapper>
-      <Tab />
+      <Tab selectorArr={['감자', '고구마', '카레라이스']} />
       <Slider />
       <Input />
       <Dropdown />
