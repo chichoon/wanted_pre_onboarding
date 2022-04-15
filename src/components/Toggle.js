@@ -78,8 +78,11 @@ const ToggleWrapper = Styled.div`
         justify-content: center;
         align-items: center;
 
+        opacity: 30%;
+        font-weight: 700;
+
         &.selected {
-          font-weight: 700;
+          opacity: 100%;
         }
       }
     }

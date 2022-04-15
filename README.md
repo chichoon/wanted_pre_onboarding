@@ -37,7 +37,7 @@ useEffect(
 
 - 토글 버튼을 누를 때 선택되는 항목을 문자열로 표시해야 합니다.
 
-- 토글 버튼을 누를 때마다 어떤 항목을 선택하였는지 배경색과 글자 굵기에 변화를 주어야 합니다
+- 토글 버튼을 누를 때마다 어떤 항목을 선택하였는지 배경색과 글자 투명도에 변화를 주어야 합니다
 
 - (부가 요소) 토글 버튼을 누를 때마다 슬라이더에 애니메이션이 들어가야 합니다
 
@@ -83,19 +83,22 @@ useEffect(
   div {
     width: 50%;
     border-radius: 2rem;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-weight: 700;
   }
   .selected {
     background-color: white;
-    font-weight: 700;
+    opacity: 30%;
   }
   ```
 
 - 선택 여부에 따라 삼항 연산자를 통해 `className`에 `selected` 클래스가 추가됩니다.
 
-  - 해당 클래스에 다른 Style (`background-color`, `font-weight`)을 적용함으로써 실제 토글 버튼처럼 슬라이더가 좌우로 움직이고, 선택한 항목의 문자열이 굵게 표시되도록 하였습니다.
+  - 해당 클래스에 다른 Style (`background-color`, `opacity`)을 적용함으로써 실제 토글 버튼처럼 슬라이더가 좌우로 움직이고, 선택한 항목의 문자열이 진하게 표시되도록 하였습니다.
 
   - 단, 이런 방식으로 구현한다면 두 항목을 나타내는 `div` 두 개가 양 옆으로 배치되어 있으므로 애니메이션 효과를 추가하면 한 `div`가 다른 `div`를 옆으로 밀어내게 됩니다.
 
