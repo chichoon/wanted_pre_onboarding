@@ -94,6 +94,13 @@ const SelectorDiv = Styled.div`
   &.selected {
     color: rgba(0, 0, 0, 1);
   }
+
+  &:hover {
+    cursor: pointer;
+    &:not(.selected) {
+    color: rgba(0, 0, 0, 0.5);
+    }
+  }
 `;
 
 export default Tab;
