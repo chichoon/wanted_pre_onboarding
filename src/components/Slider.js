@@ -177,6 +177,12 @@ const SliderBackgroundWrapper = Styled.div`
       justify-content: center;
 
       margin-left: ${props => (0.9 - 0.5) * props.indiValue}rem;
+      ${props =>
+        props.indiValue === 1
+          ? `margin-left: ${0.9 - 0.75}rem;`
+          : props.indiValue === 3
+          ? `margin-left: ${2.7 - 1.25}rem;`
+          : ''}
       cursor: pointer;
 
       &:hover {
