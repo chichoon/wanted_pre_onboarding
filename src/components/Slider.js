@@ -17,38 +17,91 @@ const Slider = ({ setFunc }) => {
         <div>{sliderValue}</div>
         <div>%</div>
       </div>
-      <SliderBody setSliderFunc={setSliderValue} />
+      <SliderBody sliderValue={sliderValue} setSliderValue={setSliderValue} />
     </SliderWrapper>
   );
 };
 
-const SliderBody = ({ setSliderFunc }) => {
+const SliderBody = ({ sliderValue, setSliderValue }) => {
   const handleOnChange = e => {
-    console.log(e.target.value);
-    setSliderFunc(1);
+    setSliderValue(e.target.value);
+  };
+
+  const setBackgroundDiv = () => {
+    let arr = [];
+    for (let i = 0; i <= 4; i++) {
+      arr.push(
+        <SliderBackground key={i} curValue={sliderValue} indiValue={i} />,
+      );
+    }
+    return arr;
   };
 
   return (
     <SliderBodyWrapper>
       <div className="front">
-        <SliderStyledInput type="range" onChange={handleOnChange} />
+        <SliderStyledInput
+          type="range"
+          value={sliderValue}
+          onChange={handleOnChange}
+        />
       </div>
-      <div className="back">
-        <div className="background">
-          <div></div>
-          <div className="stick"></div>
-        </div>
-      </div>
+      <div className="back">{setBackgroundDiv()}</div>
     </SliderBodyWrapper>
   );
 };
+
+const SliderBackground = ({ curValue, indiValue }) => {
+  return (
+    <SliderBackgroundWrapper curValue={curValue} indiValue={indiValue}>
+      <div>
+        <div></div>
+      </div>
+      <div className="pos-indicator"></div>
+    </SliderBackgroundWrapper>
+  );
+};
+
+const SliderBackgroundWrapper = Styled.div`
+  width: 3.6rem;
+  height: 5rem;
+
+  & > div {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  div:nth-child(1) {
+    & > div {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background-color: ${props =>
+        props.curValue > props.indiValue * 25 ? 'teal' : '#CCC'};
+      margin-left: ${props => {
+        switch (props.indiValue) {
+          case 0:
+            return 0;
+          case 1:
+            return 0.9;
+          case 2:
+            return 1.8 - 0.25;
+          case 3:
+            return 2.7 - 0.5;
+          case 4:
+            return 3.6 - 0.5;
+        }
+      }}rem;
+    }
+  }
+`;
 
 const SliderWrapper = Styled.div`
   width: 20rem;
   height: 10rem;
 
   padding: 0.3rem;
-  border: 1px solid blue;
 
   display: flex;
   flex-direction: column;
@@ -75,6 +128,7 @@ const SliderWrapper = Styled.div`
       text-align: right;
       font-weight: 700;
     }
+
     div:nth-child(2) {
       margin: 0 0.5rem;
       color: rgba(0, 0, 0, 0.5);
@@ -83,10 +137,9 @@ const SliderWrapper = Styled.div`
 `;
 
 const SliderBodyWrapper = Styled.div`
-  width: 17.2rem;
-  height: 4.2rem;
-  padding: 0.4rem;
-  margin-top: 0.5rem;
+  width: 18rem;
+  height: 5rem;
+  margin: 0.5rem 0.2rem;
   border: 1px solid black;
 
   display: flex;
@@ -94,21 +147,39 @@ const SliderBodyWrapper = Styled.div`
 
   position: relative;
 
-  .front {
+  & > div {
     width: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .front {
     height: 2rem;
-    padding: 0.1rem;
-    border: 1px solid red;
+
+    z-index: 3;
 
     display: flex;
     align-items: center;
+  }
+
+  .back {
+    height: 5rem;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const SliderStyledInput = Styled.input.attrs({ type: 'range' })`
 -webkit-appearance: none;
 width: 100%;
-height: 1rem;
+height: 1.5rem;
 background-color: transparent;
+margin: 0;
 
 &:focus {
   outline: none;
@@ -118,17 +189,23 @@ background-color: transparent;
   -webkit-appearance: none;
   height: 0.3rem;
   border-radius: 0.1rem;
-  background-color: #EEE;
+  background: linear-gradient(to right, teal 0%, teal ${props =>
+    props.value}%, #CCC ${props => props.value}%, #CCC 100%);
 }
 
 &::-webkit-slider-thumb {
   -webkit-appearance: none;
+  appearance: none;
+
   width: 1rem;
   height: 1rem;
-  margin: 0px;
+  margin-top: -0.3rem;
   border: 3px solid white;
   border-radius: 50%;
+
   background: teal;
+  cursor: pointer;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
 }
 
 &::-moz-range-track {
@@ -139,6 +216,10 @@ background-color: transparent;
 
 &::-moz-range-thumb {
   background-color: yellow;
+}
+
+input[type="range"]::-ms-thumb {
+  margin: 0;
 }
 
 `;
