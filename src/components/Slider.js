@@ -27,11 +27,22 @@ const SliderBody = ({ sliderValue, setSliderValue }) => {
     setSliderValue(e.target.value);
   };
 
+  const handleOnClick = value => {
+    setSliderValue(value);
+  };
+
   const setBackgroundDiv = () => {
     let arr = [];
     for (let i = 0; i <= 4; i++) {
       arr.push(
-        <SliderBackground key={i} curValue={sliderValue} indiValue={i} />,
+        <SliderBackgroundWrapper curValue={sliderValue} indiValue={i}>
+          <div className="pos-dot">
+            <div></div>
+          </div>
+          <div className="pos-indicator" onClick={handleOnClick(i * 25)}>
+            <div>{i * 25}%</div>
+          </div>
+        </SliderBackgroundWrapper>,
       );
     }
     return arr;
@@ -51,17 +62,6 @@ const SliderBody = ({ sliderValue, setSliderValue }) => {
   );
 };
 
-const SliderBackground = ({ curValue, indiValue }) => {
-  return (
-    <SliderBackgroundWrapper curValue={curValue} indiValue={indiValue}>
-      <div>
-        <div></div>
-      </div>
-      <div className="pos-indicator"></div>
-    </SliderBackgroundWrapper>
-  );
-};
-
 const SliderBackgroundWrapper = Styled.div`
   width: 3.6rem;
   height: 5rem;
@@ -72,27 +72,39 @@ const SliderBackgroundWrapper = Styled.div`
     display: flex;
     align-items: center;
   }
-  div:nth-child(1) {
+
+  .pos-dot {
     & > div {
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 50%;
       background-color: ${props =>
-        props.curValue > props.indiValue * 25 ? 'teal' : '#CCC'};
-      margin-left: ${props => {
-        switch (props.indiValue) {
-          case 0:
-            return 0;
-          case 1:
-            return 0.9;
-          case 2:
-            return 1.8 - 0.25;
-          case 3:
-            return 2.7 - 0.5;
-          case 4:
-            return 3.6 - 0.5;
-        }
-      }}rem;
+        props.curValue >= props.indiValue * 25 ? 'teal' : '#CCC'};
+
+      margin-left: ${props => (0.9 - 0.125) * props.indiValue}rem;
+    }
+  }
+
+  .pos-indicator {
+    & > div {
+      width: 2rem;
+      height: 1rem;
+      border-radius: 0.3rem;
+      background-color: #AAA;
+      color: white;
+
+      font-size: 0.5rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-left: ${props => (0.9 - 0.5) * props.indiValue}rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: teal;
+      }
     }
   }
 `;
