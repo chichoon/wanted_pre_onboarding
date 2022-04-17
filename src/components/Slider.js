@@ -184,6 +184,7 @@ const SliderBackgroundWrapper = Styled.div`
           ? `margin-left: ${2.7 - 1.25}rem;`
           : ''}
       cursor: pointer;
+      transition: background-color 0.1s;
 
       &:hover {
         background-color: teal;
@@ -239,7 +240,6 @@ margin: 0;
 input[type="range"]::-ms-thumb {
   margin: 0;
 }
-
 `;
 
 export default Slider;
