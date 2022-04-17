@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   const [toggleSelected, setToggleSelected] = useState('');
   const [tabSelected, setTabSelected] = useState('');
+  const [sliderValue, setSliderValue] = useState(0);
 
   return (
     <div className="App">
@@ -26,7 +27,10 @@ function App() {
         />
         <div>Selected: {tabSelected}</div>
       </ComponentWrapper>
-      <Slider />
+      <ComponentWrapper>
+        <Slider setFunc={setSliderValue} />
+        <div>Value: {sliderValue}</div>
+      </ComponentWrapper>
       <Input />
       <Dropdown />
     </div>
