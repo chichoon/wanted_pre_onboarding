@@ -64,9 +64,84 @@ const SliderBody = ({ sliderValue, setSliderValue }) => {
   );
 };
 
+const SliderWrapper = Styled.div`
+  width: 20rem;
+
+  padding: 0.3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .slider-head {
+    width: 18rem;
+    height: 3rem;
+    background-color: #EEE;
+
+    border: 1px solid #AAA;
+    border-radius: 0.3rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+
+    div:nth-child(1) {
+      width: 12rem;
+
+      padding: 0.5rem 0.6rem;
+      text-align: right;
+      font-weight: 700;
+    }
+
+    div:nth-child(2) {
+      margin: 0 0.5rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+`;
+
+const SliderBodyWrapper = Styled.div`
+  width: 18rem;
+  height: 4rem;
+  margin: 0.5rem 0.2rem;
+
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+
+  & > div {
+    width: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .front {
+    height: 2rem;
+
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .back {
+    height: 4rem;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
 const SliderBackgroundWrapper = Styled.div`
   width: 3.6rem;
-  height: 5rem;
+  height: 4rem;
 
   & > div {
     width: 100%;
@@ -108,82 +183,6 @@ const SliderBackgroundWrapper = Styled.div`
         background-color: teal;
       }
     }
-  }
-`;
-
-const SliderWrapper = Styled.div`
-  width: 20rem;
-  height: 10rem;
-
-  padding: 0.3rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .slider-head {
-    width: 18rem;
-    height: 3rem;
-    background-color: #EEE;
-
-    border: 1px solid #AAA;
-    border-radius: 0.3rem;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-
-    div:nth-child(1) {
-      width: 12rem;
-
-      padding: 0.5rem 0.6rem;
-      text-align: right;
-      font-weight: 700;
-    }
-
-    div:nth-child(2) {
-      margin: 0 0.5rem;
-      color: rgba(0, 0, 0, 0.5);
-    }
-  }
-`;
-
-const SliderBodyWrapper = Styled.div`
-  width: 18rem;
-  height: 5rem;
-  margin: 0.5rem 0.2rem;
-
-  display: flex;
-  justify-content: center;
-
-  position: relative;
-
-  & > div {
-    width: inherit;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  .front {
-    height: 2rem;
-
-    z-index: 3;
-
-    display: flex;
-    align-items: center;
-  }
-
-  .back {
-    height: 5rem;
-
-    z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
 
