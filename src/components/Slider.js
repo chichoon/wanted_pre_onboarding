@@ -4,8 +4,6 @@ import Styled from 'styled-components';
 
 const Slider = ({ setFunc }) => {
   const [sliderValue, setSliderValue] = useState(0);
-  //const [dragStart, setDragStart] = useState(0);
-  //const [dragEnd, setDragEnd] = useState(0);
 
   useEffect(() => {
     setFunc(sliderValue);
@@ -27,19 +25,23 @@ const SliderBody = ({ sliderValue, setSliderValue }) => {
     setSliderValue(e.target.value);
   };
 
-  const handleOnClick = value => {
-    setSliderValue(value);
+  const handleOnClick = (e, buttonValue) => {
+    e.preventDefault();
+    setSliderValue(buttonValue);
   };
 
   const setBackgroundDiv = () => {
     let arr = [];
     for (let i = 0; i <= 4; i++) {
       arr.push(
-        <SliderBackgroundWrapper curValue={sliderValue} indiValue={i}>
+        <SliderBackgroundWrapper key={i} curValue={sliderValue} indiValue={i}>
           <div className="pos-dot">
             <div></div>
           </div>
-          <div className="pos-indicator" onClick={handleOnClick(i * 25)}>
+          <div
+            className="pos-indicator"
+            onClick={e => handleOnClick(e, i * 25)}
+          >
             <div>{i * 25}%</div>
           </div>
         </SliderBackgroundWrapper>,
@@ -152,7 +154,6 @@ const SliderBodyWrapper = Styled.div`
   width: 18rem;
   height: 5rem;
   margin: 0.5rem 0.2rem;
-  border: 1px solid black;
 
   display: flex;
   justify-content: center;
