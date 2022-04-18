@@ -21,7 +21,7 @@ const Input = ({ setFuncEmail, setFuncPassword }) => {
         setInputEmail={setInputEmail}
       />
       <PasswordInput
-        className="input-div"
+        className="input-div passwd"
         inputPassword={inputPassword}
         setInputPassword={setInputPassword}
       />
@@ -92,6 +92,10 @@ const InputWrapper = Styled.div`
     top: 0.5rem;
 
     transition: fill 0.2s;
+  }
+
+  .passwd svg:hover {
+      cursor: pointer;
   }
 `;
 
