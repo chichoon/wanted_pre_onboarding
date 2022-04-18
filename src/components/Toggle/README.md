@@ -145,3 +145,8 @@
   - 애니메이션은 `transition`으로, 애니메이션을 넣는 요소는 `margin-left`로 설정하여 `margin-left`가 변화할 때마다 애니메이션이 보여지도록 설정합니다.
 
   - 애니메이션 시간은 0.2초로 설정하였습니다.
+
+## 결과물
+
+![Apr-18-2022 16-50-40](https://user-images.githubusercontent.com/37893979/163775653-86180f9d-d6fa-4818-90ab-12a2090d915f.gif)
+
