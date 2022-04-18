@@ -37,4 +37,12 @@ useEffect(
 
 ---
 
-## [Toggle.js](./src/components/Toggle/README.md)
+## [Toggle](./src/components/Toggle/README.md)
+
+## [Tab](./src/components/Tab/README.md)
+
+## [Slider](./src/components/Slider/README.md)
+
+## [Input](./src/components/Input/README.md)
+
+## [Dropdown](./src/components/Dropdown/README.md)
