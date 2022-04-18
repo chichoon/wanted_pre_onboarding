@@ -10,6 +10,8 @@
 
 ## 결과물
 
+![Apr-18-2022 16-56-03](https://user-images.githubusercontent.com/37893979/163791899-9586bb11-a7fe-4f7d-91da-d0ebd709a82c.gif)
+
 ## 핵심 요소
 
 ```jsx
