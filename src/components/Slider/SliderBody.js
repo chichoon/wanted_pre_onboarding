@@ -172,13 +172,22 @@ margin: 0;
 }
 
 &::-moz-range-track {
-  height: 2rem;
+  height: 0.3rem;
   border-radius: 0.1rem;
-  background-color: #EEE;
+  background: linear-gradient(to right, teal 0%, teal ${props =>
+    props.value}%, #CCC ${props => props.value}%, #CCC 100%);
 }
 
 &::-moz-range-thumb {
-  background-color: yellow;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.3rem;
+  border: 3px solid white;
+  border-radius: 50%;
+
+  background: teal;
+  cursor: pointer;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
 }
 
 input[type="range"]::-ms-thumb {
