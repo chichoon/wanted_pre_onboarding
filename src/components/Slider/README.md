@@ -224,3 +224,144 @@ const handleOnChange = e => {
   - 0% 지점부터 `props.value`% 지점까지 teal색으로 칠하고, `props.value`% 지점부터 100% 지점까지 `#CCC` = 회색 (원래 배경색) 으로 칠해주었습니다.
 
   - 이렇게 스타일링하면 두 색의 경계는 버튼에 의해 가려지고, props.value가 변화할 때마다 (버튼을 움직일 때마다) 버튼 기준 양 쪽의 색이 다르게 표현됩니다.
+
+```jsx
+const setBackgroundDiv = () => {
+  let arr = [];
+  for (let i = 0; i <= 4; i++) {
+    arr.push(
+      <SliderBackgroundWrapper key={i} curValue={sliderValue} indiValue={i}>
+        <div className="pos-dot">
+          <div></div>
+        </div>
+        <div className="pos-indicator" onClick={e => handleOnClick(e, i * 25)}>
+          <div>{i * 25}%</div>
+        </div>
+      </SliderBackgroundWrapper>,
+    );
+  }
+  return arr;
+};
+```
+
+- 슬라이더의 디자인이 완료되었으므로, 뒤에 보이는 요소들 (눈금 점, 버튼) 을 구현할 차례입니다.
+
+- 총 5개 (0%, 25%, 50%, 75%, 100%) 의 눈금점 (`pos-dot`) + 버튼 (`pos-indicator`) 이 표시되며, 두 요소는 같은 지점에 표시되어야 하므로 `SliderBackgroundWrapper` Styled `div` 컴포넌트로 묶어줍니다.
+
+- 5개의 `div`는 %값만 제외하고 모두 같은 요소를 가지므로 for문을 통해 배열에 push하고, 배열을 반환하여 한번에 렌더링하도록 구현하였습니다.
+
+- `curValue`는 현재 슬라이더의 값을 나타내며, 이전에 선언한 상태값인 `sliderValue`를 사용합니다.
+
+- `indiValue`는 현재 요소가 가리키는 값을 나타내며, 0%, 25%, 50%, 75%, 100% 중 한 개입니다.
+
+  - `indiValue`는 for문을 통해 적용합니다. `i`는 0부터 4까지 증가하므로, 실제 사용하는 값은 {`i` \* 25}가 됩니다.
+
+  - `i`를 굳이 0부터 4까지로 설정한 이유는 추후 스타일을 적용할 때 `i`를 이용하여 서로 다른 margin을 적용해야 하기 때문입니다.
+
+- `pos-dot`은 슬라이더 뒤에 배치되는 눈금 점을 담은 `div`입니다
+
+  - 실질적인 눈금 점은 하위 `div`가 담당하는데, 이는 `pos-dot` 이라는 상위 `div` 박스의 폭을 넉넉하게 설정한 뒤 하위 `div`의 `margin-left`를 조정함으로써 배치가 무너지지 않고 박스 안에서 조절되도록 하기 위함입니다.
+
+- `pos-indicator`은 슬라이더 하단에 배치되는 버튼을 담은 `div`입니다
+
+  - 마찬가지로, 실질적인 버튼은 하위 `div`가 담당하며, `pos-indicator`은 박스 역할만을 합니다.
+
+  - 클릭하면 슬라이더의 값을 바꾸어야 하므로, `handleOnClick` 핸들러를 호출하고, 인자로 `i * 25`를 넣어줍니다. `i * 25`는 `i`가 0, 1, 2, 3, 4 중 하나이므로 0, 25, 50, 75, 100이 될 것입니다.
+
+  - 인자로 받아온 값으로 상태값을 교체해 줄 것입니다. 슬라이더도 상태값을 이용하므로, 슬라이더 버튼의 위치도 자동으로 변경됩니다.
+
+- `pos-dot`과 `pos-indicator`은 위아래로 배치됩니다.
+
+  - 따라서 총 5개의 `pos-dot`과 5개의 `pos-indicator`가 배치됩니다.
+
+  - 위아래로 배치한 이유는 눈금점과 버튼이 정확히 슬라이더를 4등분하는 경계 지점에 함께 배치되어야 하기 때문입니다.
+
+```css
+& > div {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+```
+
+- `pos-dot` 과 `pos-indicator`에 스타일을 적용해 보겠습니다. 두 `div`는 공통적으로,
+
+  - 상위 div (`SliderBackgroundWrapper`) 와 같은 너비 (3.6rem) 를 갖습니다. 3.6rem인 이유는 슬라이더 본체의 너비가 총 18rem이기 때문에 이를 5등분 하였습니다.
+
+  - 2rem의 높이를 갖습니다.
+
+  - `align-items` 속성을 통해 세로축 중앙에 하위 요소를 배치합니다.
+
+```css
+  .pos-dot {
+    & > div {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background-color: ${props =>
+        props.curValue >= props.indiValue * 25 ? 'teal' : '#CCC'};
+      margin-left: ${props => (0.9 - 0.125) * props.indiValue}rem;
+    }
+  }
+```
+
+- `pos-dot`은
+
+  - 하위 `div`가 눈금 점을 나타내므로 가로세로 0.5rem의 작은 점으로 스타일링합니다.
+
+  - 배경색은 prop에 따라 다르게 지정됩니다.
+
+  - 앞서 `curValue`와 `indiValue`를 props로 받아왔는데, `curValue`는 현재 슬라이더의 값, `indiValue`는 눈금점이 나타내는 값 (`i`)을 의미하였습니다.
+
+  - 버튼이 눈금점보다 오른쪽에 있을 경우 해당 눈금점은 teal색, 왼쪽에 있을 경우 해당 눈금점은 회색 (`#CCC`) 으로 표현되어야 슬라이더를 움직일 때 자연스러운 색상 배치가 이루어집니다.
+
+  - 따라서 `curValue`가 `indiValue` \* 25보다 클 경우 teal색, 그 외의 경우 `#CCC` 색을 적용합니다.
+
+  - `margin-left` 속성은 `indiValue`에 의해 결정되는데, 각 `pos-dot` `div`의 너비가 3.6rem이고 슬라이더를 4등분 해야하므로, 3.6 / 4 = 0.9rem만큼의 `margin-left`를 지정합니다. 단, 눈금점의 너비 (0.5rem) 에 의해 `margin-left`가 조금씩 오른쪽으로 밀리므로 눈금점의 너비를 4등분하여 빼주는 식으로 보정하였습니다.
+
+```css
+.pos-indicator {
+  & > div {
+    width: 2rem;
+    height: 1rem;
+    border-radius: 0.3rem;
+    background-color: #AAA;
+    color: white;
+
+    font-size: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: ${props => (0.9 - 0.5) * props.indiValue}rem;
+    ${props =>
+      props.indiValue === 1
+        ? `margin-left: ${0.9 - 0.75}rem;`
+        : props.indiValue === 3
+        ? `margin-left: ${2.7 - 1.25}rem;`
+        : ''}
+  	cursor: pointer;
+  	transition: background-color 0.1s;
+
+     &:hover {
+      background-color: teal;
+    }
+  }
+}
+```
+
+- `pos-indicator`은
+
+  - 하위 `div`를 적당한 크기와 색상의 작은 박스로 다듬었습니다.
+
+  - `curValue`에 의해 결정되는 요소는 없지만, `pos-dot`과 마찬가지로 `margin-left`를 조정하여 슬라이더를 4등분하는 지점에 예쁘게 배치해야 하므로 `pos-dot`과 비슷한 계산법을 사용합니다.
+
+  - 먼저 모든 박스에 `pos-dot`과 같이 0.9 - (박스의 너비 / 4) rem 만큼 `margin-left`를 보정해 줍니다.
+
+  - 다음엔 `indiValue`가 1일 때 (25%) 와 3일 때 (75%) 추가적으로 보정을 해주어야 합니다. 위의 계산만으로는 버튼이 눈금 점의 하단에 예쁘게 배치되지 않고 오른쪽으로 밀려 보이게 됩니다.
+
+  - 박스 너비의 8분의 1만큼 추가로 폭을 보정하여 적용하였습니다.
+
+  - 버튼에 마우스를 올리면 색이 `teal`로 변하도록 하였고, 색상 변화에 애니메이션을 주기 위해 `transition` 속성을 부여하였습니다.
