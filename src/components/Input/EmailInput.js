@@ -14,7 +14,6 @@ const EmailInput = ({ className, inputEmail, setInputEmail }) => {
   const handleOnBlur = e => {
     e.preventDefault();
     setIfShown(!ifEmailValid && inputEmail.length > 0 ? true : false);
-    console.log(ifEmailValid);
   };
 
   return (
