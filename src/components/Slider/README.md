@@ -92,7 +92,7 @@ const handleOnChange = e => {
 
   - 구현을 하다 보니 Styled 컴포넌트의 스타일 시트가 길어지면서 가독성을 해치는 것 같아 결국 파일을 2개로 분리하게 되었습니다.
 
-### Slider.js
+### Slider
 
 ```jsx
 <SliderWrapper>
@@ -118,7 +118,7 @@ const handleOnChange = e => {
 
 - `SliderBody` 컴포넌트의 구현과 스타일링이 매우 길어지므로, 별개의 파일인 SliderBody.js로 분리하였습니다.
 
-### SliderBody.js
+### SliderBody
 
 ```jsx
 <SliderBodyWrapper>
@@ -223,7 +223,12 @@ const handleOnChange = e => {
 
   - 0% 지점부터 `props.value`% 지점까지 teal색으로 칠하고, `props.value`% 지점부터 100% 지점까지 `#CCC` = 회색 (원래 배경색) 으로 칠해주었습니다.
 
+
+<img width="86" alt="스크린샷 2022-04-18 오후 6 53 54" src="https://user-images.githubusercontent.com/37893979/163791689-9aaa689e-f2ab-446f-9426-475a6324f423.png">
+
   - 이렇게 스타일링하면 두 색의 경계는 버튼에 의해 가려지고, props.value가 변화할 때마다 (버튼을 움직일 때마다) 버튼 기준 양 쪽의 색이 다르게 표현됩니다.
+
+### SliderBackgroundWrapper
 
 ```jsx
 const setBackgroundDiv = () => {
@@ -275,6 +280,10 @@ const setBackgroundDiv = () => {
   - 따라서 총 5개의 `pos-dot`과 5개의 `pos-indicator`가 배치됩니다.
 
   - 위아래로 배치한 이유는 눈금점과 버튼이 정확히 슬라이더를 4등분하는 경계 지점에 함께 배치되어야 하기 때문입니다.
+
+<img width="417" alt="스크린샷 2022-04-18 오후 6 30 15" src="https://user-images.githubusercontent.com/37893979/163791565-423a0e6b-80e2-429b-8379-2e8cee08d533.png">
+
+- `pos-dot` 과 `pos-indicator`에 border를 적용해 보았습니다. 보시다시피 같은 너비와 높이를 가지는 직사각형 형태의 박스인 것을 확인할 수 있습니다.
 
 ```css
 & > div {
