@@ -4,10 +4,8 @@ import Styled from 'styled-components';
 import DropdownBottom from './DropdownBottom';
 
 const Dropdown = ({ dropdownArr, setFunc }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedStr, setSelectedStr] = useState(dropdownArr[0]);
   const [ifHidden, setIfHidden] = useState(true);
-
-  console.log(dropdownArr);
 
   const handleOnClick = e => {
     e.preventDefault();
@@ -15,13 +13,13 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
   };
 
   useEffect(() => {
-    setFunc(dropdownArr[selectedIndex]);
-  }, [selectedIndex]);
+    setFunc(selectedStr);
+  }, [selectedStr]);
 
   return (
     <DropdownWrapper>
       <div className="dropdown-top" onClick={handleOnClick}>
-        <div className="dropdown-top-header">{dropdownArr[selectedIndex]}</div>
+        <div className="dropdown-top-header">{selectedStr}</div>
         <div className="dropdown-top-arrow">
           <svg
             height="32"
@@ -38,7 +36,7 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
         dropdownArr={dropdownArr}
         ifHidden={ifHidden}
         setIfHidden={setIfHidden}
-        setIndex={setSelectedIndex}
+        setStr={setSelectedStr}
       />
     </DropdownWrapper>
   );
