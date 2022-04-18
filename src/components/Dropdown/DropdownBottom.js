@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import Styled from 'styled-components';
 
-const DropdownBottom = ({ dropdownArr, ifHidden, setIndex }) => {
+const DropdownBottom = ({ dropdownArr, ifHidden, setIfHidden, setIndex }) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleOnClick = (e, i) => {
     e.preventDefault();
     setIndex(i);
+    setIfHidden(true);
   };
 
   const handleOnChange = e => {
@@ -17,25 +18,29 @@ const DropdownBottom = ({ dropdownArr, ifHidden, setIndex }) => {
   return (
     <DropdownBottomWrapper ifHidden={ifHidden}>
       <input type="text" onChange={handleOnChange} value={searchInput} />
-      {dropdownArr.map((v, i) => (
-        <div key={i} onClick={e => handleOnClick(e, i)}>
-          {v}
-        </div>
-      ))}
+      <div>
+        {dropdownArr.map((v, i) => (
+          <div key={i} onClick={e => handleOnClick(e, i)}>
+            {v}
+          </div>
+        ))}
+      </div>
     </DropdownBottomWrapper>
   );
 };
 
 const DropdownBottomWrapper = Styled.div`
-	${props => (!props.ifHidden ? 'display: none;' : '')}
+	${props => (props.ifHidden ? 'display: none;' : '')}
 	width: 12rem;
-	height: 10rem;
+	height: fit-content;
 	margin-top: 0.5rem;
+	background-color: white;
 
     border: 1px solid #AAA;
     border-radius: 0.3rem;
 
-	overflow-y: scroll;
+
+	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 
 	input {
 		width: 9rem;
@@ -47,17 +52,23 @@ const DropdownBottomWrapper = Styled.div`
 		border-bottom: 1px solid #AAA;
 	}
 
-	div {
-		width: 10rem;
-		padding: 0.6rem 1rem;
-		background-color: white;
+	& > div {
+		height: 10rem;
+		overflow-y: scroll;
 
-		transition: background-color 0.2s;
-		&:hover {
-			cursor: pointer;
-			background-color: #EEE;
+		& > div {
+			width: 10rem;
+			padding: 0.6rem 1rem;
+			background-color: white;
+
+			transition: background-color 0.2s;
+			&:hover {
+				cursor: pointer;
+				background-color: #EEE;
+			}
 		}
 	}
+
 `;
 
 export default DropdownBottom;

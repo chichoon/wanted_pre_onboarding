@@ -37,6 +37,7 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
       <DropdownBottom
         dropdownArr={dropdownArr}
         ifHidden={ifHidden}
+        setIfHidden={setIfHidden}
         setIndex={setSelectedIndex}
       />
     </DropdownWrapper>
@@ -46,7 +47,6 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
 const DropdownWrapper = Styled.div`
   width: 20rem;
   height: fit-content;
-  border: 1px solid blue;
 
   display: flex;
   flex-direction : column;
