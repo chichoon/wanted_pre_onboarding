@@ -21,7 +21,7 @@ const [selectedIndex, setSelectedIndex] = useState(0);
 
 - 컴포넌트를 다른 곳에서도 쓸 수 있도록, 탭 항목의 이름은 props로 받도록 하였습니다.
 
-- 어떤 항목을 선택하였는지는 선택한 항목의 배열에서의 index 번호를 저장하는 State를 사용하였습니다.
+- 어떤 항목을 선택하였는지는 선택한 항목의 배열에서의 index 번호를 저장하는 State (`selectedIndex`) 를 사용하였습니다.
 
   - 기본값은 가장 왼쪽의 항목을 나타내는 인덱스인 0으로 지정합니다.
 
