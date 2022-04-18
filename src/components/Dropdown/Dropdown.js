@@ -55,7 +55,7 @@ const DropdownWrapper = Styled.div`
   .dropdown-top {
     width: 12rem;
     height: 2rem;
-    padding: 0.5rem 0.3rem;
+    padding: 0.2rem 0.3rem;
     background-color: #FAFAFA;
 
     border: 1px solid #AAA;
@@ -70,6 +70,7 @@ const DropdownWrapper = Styled.div`
       width: 8rem;
       padding: 0 0.2rem;
 
+      font-size: 0.8rem;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
@@ -80,6 +81,7 @@ const DropdownWrapper = Styled.div`
       height: inherit;
       svg {
         width: 1rem;
+        fill: #666;
       }
     }
 

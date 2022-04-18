@@ -17,7 +17,12 @@ const DropdownBottom = ({ dropdownArr, ifHidden, setIfHidden, setIndex }) => {
 
   return (
     <DropdownBottomWrapper ifHidden={ifHidden}>
-      <input type="text" onChange={handleOnChange} value={searchInput} />
+      <input
+        type="text"
+        onChange={handleOnChange}
+        value={searchInput}
+        placeholder="Search Symbol"
+      />
       <div>
         {dropdownArr.map((v, i) => (
           <div key={i} onClick={e => handleOnClick(e, i)}>
@@ -35,10 +40,10 @@ const DropdownBottomWrapper = Styled.div`
 	height: fit-content;
 	margin-top: 0.5rem;
 	background-color: white;
+	overflow: hidden;
 
     border: 1px solid #AAA;
     border-radius: 0.3rem;
-
 
 	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 
@@ -50,6 +55,9 @@ const DropdownBottomWrapper = Styled.div`
 		border-top-right-radius: 0.3rem;
 		border: none;
 		border-bottom: 1px solid #AAA;
+
+		font-size: 0.9rem;
+		color: #333;
 	}
 
 	& > div {
@@ -58,10 +66,15 @@ const DropdownBottomWrapper = Styled.div`
 
 		& > div {
 			width: 10rem;
-			padding: 0.6rem 1rem;
+			padding: 0.6rem 1rem 0.6rem 2rem;
 			background-color: white;
 
+			font-size: 0.8rem;
+			text-align: left;
+			color: #666;
+
 			transition: background-color 0.2s;
+
 			&:hover {
 				cursor: pointer;
 				background-color: #EEE;
