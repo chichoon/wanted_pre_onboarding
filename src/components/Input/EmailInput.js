@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const EmailInput = ({ className, inputEmail, setInputEmail }) => {
   const [ifEmailValid, setIfEmailValid] = useState(false);
-  const [ifFocus, setIfFocus] = useState(false);
+  const [ifShown, setIfShown] = useState(false);
 
   const handleOnEmailChange = e => {
     const regex = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/;
@@ -11,9 +11,10 @@ const EmailInput = ({ className, inputEmail, setInputEmail }) => {
     else setIfEmailValid(false);
   };
 
-  const handleOnFocus = e => {
+  const handleOnBlur = e => {
     e.preventDefault();
-    setIfFocus(ifFocus ? false : true);
+    setIfShown(!ifEmailValid && inputEmail.length > 0 ? true : false);
+    console.log(ifEmailValid);
   };
 
   return (
@@ -26,9 +27,11 @@ const EmailInput = ({ className, inputEmail, setInputEmail }) => {
           placeholder="E-mail"
           value={inputEmail}
           onChange={handleOnEmailChange}
-          onFocus={handleOnFocus}
+          onBlur={handleOnBlur}
         />
-        <label hidden={ifFocus ? true : false}>Invalid E-mail address.</label>
+        <label style={{ display: `${ifShown ? '' : 'none'}` }}>
+          Invalid E-mail address.
+        </label>
         <svg
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
