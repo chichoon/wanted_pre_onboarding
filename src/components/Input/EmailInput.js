@@ -5,7 +5,7 @@ const EmailInput = ({ className, inputEmail, setInputEmail }) => {
   const [ifShown, setIfShown] = useState(false);
 
   const handleOnEmailChange = e => {
-    const regex = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/;
+    const regex = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     setInputEmail(e.target.value);
     if (e.target.value.match(regex)) setIfEmailValid(true);
     else setIfEmailValid(false);
