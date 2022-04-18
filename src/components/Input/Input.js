@@ -46,7 +46,7 @@ const InputWrapper = Styled.div`
 
     label {
       width: 14rem;
-      padding: 0.3rem 0.5rem;
+      padding: 0.3rem;
 
       text-align: left;
       font-size: 0.5rem;
@@ -55,6 +55,10 @@ const InputWrapper = Styled.div`
       display: flex;
       flex-direction: column;
       justify-content: left;
+    }
+
+    label:nth-child(2) {
+      color: rgba(200, 0, 0, 0.7);
     }
 
     input {
@@ -67,6 +71,10 @@ const InputWrapper = Styled.div`
       border: 1px solid #AAA;
       border-radius: 0.2rem;
     }
+  }
+
+  .input-div:nth-child(1) {
+    margin-bottom: 0.5rem;
   }
 
   input:focus {
