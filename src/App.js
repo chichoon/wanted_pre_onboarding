@@ -11,6 +11,7 @@ function App() {
   const [sliderValue, setSliderValue] = useState(0);
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
+  const [dropdownSelected, setDropdownSelected] = useState('');
 
   return (
     <div className="App">
@@ -41,7 +42,19 @@ function App() {
         <div>Email: {inputEmail}</div>
         <div>Password: {inputPassword}</div>
       </ComponentWrapper>
-      <Dropdown />
+      <ComponentWrapper>
+        <Dropdown
+          dropdownArr={[
+            'BTCUSD.PERP',
+            'BCHUSD.PERP',
+            'ETHUSD.PERP',
+            'BANUSD.PERP',
+            'XPRUSD.PERP',
+          ]}
+          setFunc={setDropdownSelected}
+        />
+        <div>Selected: {dropdownSelected} </div>
+      </ComponentWrapper>
     </div>
   );
 }
