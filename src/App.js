@@ -9,6 +9,8 @@ function App() {
   const [toggleSelected, setToggleSelected] = useState('');
   const [tabSelected, setTabSelected] = useState('');
   const [sliderValue, setSliderValue] = useState(0);
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
 
   return (
     <div className="App">
@@ -31,7 +33,14 @@ function App() {
         <Slider setFunc={setSliderValue} />
         <div>Value: {sliderValue}</div>
       </ComponentWrapper>
-      <Input />
+      <ComponentWrapper>
+        <Input
+          setFuncEmail={setInputEmail}
+          setFuncPassword={setInputPassword}
+        />
+        <div>Email: {inputEmail}</div>
+        <div>Password: {inputPassword}</div>
+      </ComponentWrapper>
       <Dropdown />
     </div>
   );
