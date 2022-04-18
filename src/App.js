@@ -52,6 +52,8 @@ const ComponentWrapper = Styled.div`
 
   & > div {
     margin: 0.5rem;
+    width: 20rem;
+    overflow: hidden;
   }
 `;
 
