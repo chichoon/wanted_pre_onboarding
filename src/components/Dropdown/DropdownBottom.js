@@ -24,11 +24,16 @@ const DropdownBottom = ({ dropdownArr, ifHidden, setIfHidden, setIndex }) => {
         placeholder="Search Symbol"
       />
       <div>
-        {dropdownArr.map((v, i) => (
-          <div key={i} onClick={e => handleOnClick(e, i)}>
-            {v}
-          </div>
-        ))}
+        {dropdownArr
+          .filter(v => {
+            if (searchInput === '') return v;
+            else if (v.toLowerCase().startsWith(searchInput)) return v;
+          })
+          .map((v, i) => (
+            <div key={i} onClick={e => handleOnClick(e, i)}>
+              {v}
+            </div>
+          ))}
       </div>
     </DropdownBottomWrapper>
   );
