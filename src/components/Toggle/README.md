@@ -31,7 +31,7 @@ const [ifToggle, setIfToggle] = useState(false);
   };
   ```
 
-- 버튼을 클릭할 때마다 state를 set하는 onClick 핸들러를 추가하였고, 이 state를 이용하여 선택된 항목과 그렇지 않은 항목에 서로 다른 style이 적용되도록 하였습니다.
+- 버튼을 클릭할 때마다 state를 set하는 `handleOnClick` 핸들러를 추가하였고, 이 state를 이용하여 선택된 항목과 그렇지 않은 항목에 서로 다른 style이 적용되도록 하였습니다.
 
 - 컴포넌트의 무한 렌더링을 막기 위해 `e.preventDefault`를 적용하였습니다.
 

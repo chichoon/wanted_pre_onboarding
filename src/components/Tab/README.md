@@ -63,7 +63,7 @@ const [selectedIndex, setSelectedIndex] = useState(0);
 
   - `div` 내의 텍스트는 `selectorArr`에 저장되어 있는 문자열을 출력합니다.
 
-- 특정 탭을 선택하면 `handleOnClick` 함수가 실행되며, 이 함수는 선택된 탭의 인덱스 번호를 `selectedIndex`에 set합니다.
+- 특정 탭을 선택하면 `handleOnClick` 핸들러가 실행되며, 이 핸들러는 선택된 탭의 인덱스 번호를 `selectedIndex`에 set합니다.
 
   - 탭의 인덱스와 선택된 탭의 인덱스 (`selectedIndex`) 가 일치할 경우, 탭에 `selected` 클래스가 추가되며, 다른 style이 적용됩니다.
 
