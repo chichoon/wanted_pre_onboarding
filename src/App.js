@@ -21,26 +21,26 @@ function App() {
           secondString="상세"
           setFunc={setToggleSelected}
         />
-        <div>Selected: {toggleSelected}</div>
+        <div className="component-value">Selected: {toggleSelected}</div>
       </ComponentWrapper>
       <ComponentWrapper>
         <Tab
           selectorArr={['감자', '고구마', '카레라이스']}
           setFunc={setTabSelected}
         />
-        <div>Selected: {tabSelected}</div>
+        <div className="component-value">Selected: {tabSelected}</div>
       </ComponentWrapper>
       <ComponentWrapper>
         <Slider setFunc={setSliderValue} />
-        <div>Value: {sliderValue}</div>
+        <div className="component-value">Value: {sliderValue}</div>
       </ComponentWrapper>
       <ComponentWrapper>
         <Input
           setFuncEmail={setInputEmail}
           setFuncPassword={setInputPassword}
         />
-        <div>Email: {inputEmail}</div>
-        <div>Password: {inputPassword}</div>
+        <div className="component-value">Email: {inputEmail}</div>
+        <div className="component-value">Password: {inputPassword}</div>
       </ComponentWrapper>
       <ComponentWrapper>
         <Dropdown
@@ -53,7 +53,7 @@ function App() {
           ]}
           setFunc={setDropdownSelected}
         />
-        <div>Selected: {dropdownSelected} </div>
+        <div className="component-value">Selected: {dropdownSelected} </div>
       </ComponentWrapper>
     </div>
   );
@@ -63,9 +63,8 @@ const ComponentWrapper = Styled.div`
   margin: 0.5rem;
   margin-bottom: 1rem;
 
-  & > div {
+  & > .component-value {
     margin: 0.5rem;
-    width: 20rem;
     overflow: hidden;
   }
 `;
