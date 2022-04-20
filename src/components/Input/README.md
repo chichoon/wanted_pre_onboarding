@@ -61,6 +61,8 @@ const handleOnEmailChange = e => {
 
 - 체크 아이콘과 눈 아이콘은 input 요소 안에 보여져야 하지만, input 태그는 자식 태그를 가질 수 없습니다.
 
+<img width="367" alt="스크린샷 2022-04-20 오후 12 32 27" src="https://user-images.githubusercontent.com/37893979/164157682-c7c21820-1da1-4bc0-a014-54bb53cf07e5.png">
+
 - input 태그 내에 자식 태그를 심으면 위와 같은 오류가 출력됩니다.
 
 - 따라서 아이콘을 input 요소 안에 표시하기 위해 아이콘 태그와 input 태그를 relative 태그를 이용해 겹쳐 표시하여야 합니다.
