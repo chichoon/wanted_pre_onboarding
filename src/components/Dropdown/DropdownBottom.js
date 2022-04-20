@@ -107,6 +107,9 @@ const DropdownBottomWrapper = Styled.div`
 			font-size: 0.8rem;
 			text-align: left;
 			color: #666;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
 			transition: background-color 0.2s;
 
