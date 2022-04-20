@@ -75,7 +75,6 @@ const DropdownBottomWrapper = Styled.div`
 		svg {
 			width: 1rem;
 			padding: 0.5rem;
-			position: relative;
 		}
 
 		input {
