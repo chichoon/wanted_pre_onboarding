@@ -10,4 +10,6 @@
 
 ## 결과물
 
+![Apr-20-2022 14-45-15](https://user-images.githubusercontent.com/37893979/164158843-1483964e-653a-4c91-a761-e54305feeb30.gif)
+
 ## 핵심 요소
