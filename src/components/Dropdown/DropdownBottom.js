@@ -61,8 +61,8 @@ const DropdownBottomWrapper = Styled.div`
 	background-color: white;
 	overflow: hidden;
 
-    border: 1px solid #AAA;
-    border-radius: 0.3rem;
+  border: 1px solid #AAA;
+  border-radius: 0.3rem;
 
 	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 
