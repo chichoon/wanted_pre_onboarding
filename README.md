@@ -8,7 +8,7 @@
 
 결과물을 확인할 수 있도록 `gh-pages` 라이브러리를 이용하여 깃허브 페이지로 호스팅 하였습니다.
 
-# [결과물 페이지 보러가기](https://chichoon.github.io/wanted-pre-onboarding)
+# [결과물 페이지 보러가기](https://chichoon.github.io/wanted_pre_onboarding/)
 
 ---
 
