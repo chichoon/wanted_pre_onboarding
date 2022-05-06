@@ -73,11 +73,13 @@
       }
     }
 
-    .divList {
+    .selectList {
       height: 10rem;
+      padding: 0;
+      margin: 0;
       overflow-y: scroll;
 
-      & > div {
+      & > li {
         width: 9rem;
         padding: 0.6rem 1rem 0.6rem 2rem;
         overflow: hidden;
@@ -97,7 +99,7 @@
     }
   }
 
-  .ifHidden {
+  .isHidden {
     display: none;
   }
 }
