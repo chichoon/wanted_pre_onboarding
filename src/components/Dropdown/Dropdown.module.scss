@@ -19,18 +19,13 @@
     border: 1px solid colors.$GRAYA;
     border-radius: 0.3rem;
 
-    .dropdownTopHeader {
+    .dropdownTopSpan {
       width: 8rem;
       padding: 0 0.2rem;
       overflow: hidden;
       font-size: 0.8rem;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    .topArrow {
-      width: 1rem;
-      fill: colors.$GRAY6;
     }
 
     &:hover {
@@ -52,11 +47,6 @@
       display: flex;
       flex-direction: row;
       border-bottom: 1px solid colors.$GRAYA;
-
-      .searchIcon {
-        width: 1rem;
-        padding: 0.5rem;
-      }
 
       input {
         width: 9rem;
@@ -101,5 +91,11 @@
 
   .isHidden {
     display: none;
+  }
+
+  .svgs {
+    width: 1rem;
+    padding: 0.5rem;
+    fill: colors.$GRAY6;
   }
 }

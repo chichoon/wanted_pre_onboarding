@@ -30,15 +30,15 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
   return (
     <div className={styles.dropdownDiv}>
       <button className={styles.dropdownTop} onClick={handleTopClick}>
-        <div className={styles.dropdownTopHeader}>{selectedStr}</div>
-        <TopArrow className={styles.topArrow} />
+        <span className={styles.dropdownTopSpan}>{selectedStr}</span>
+        <TopArrow className={styles.svgs} />
       </button>
       <div
         className={cx(styles.dropdownBottom, { [styles.isHidden]: isHidden })}
         ref={ref}
       >
         <div className={styles.searchInput}>
-          <SearchIcon className={styles.searchIcon} />
+          <SearchIcon className={styles.svgs} />
           <input
             type="text"
             onChange={handleOnChange}
