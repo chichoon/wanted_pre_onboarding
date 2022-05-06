@@ -15,7 +15,7 @@
     width: 12rem;
     height: 2rem;
     padding: 0.2rem 0.3rem;
-    background-color: #fafafa;
+    background-color: colors.$GRAYE;
     border: 1px solid colors.$GRAYA;
     border-radius: 0.3rem;
 
@@ -29,8 +29,8 @@
     }
 
     .topArrow {
-      width: 0.1rem;
-      fill: #666666;
+      width: 1rem;
+      fill: colors.$GRAY6;
     }
 
     &:hover {
@@ -43,7 +43,7 @@
     height: fit-content;
     margin-top: 0.5rem;
     overflow: hidden;
-    background-color: white;
+    background-color: colors.$WHITE;
     border: 1px solid colors.$GRAYA;
     border-radius: 0.3rem;
     box-shadow: 0 0 0.5rem colors.$SHADOW_GRAY;
@@ -88,7 +88,7 @@
         text-align: left;
         text-overflow: ellipsis;
         white-space: nowrap;
-        background-color: white;
+        background-color: colors.$WHITE;
         transition: background-color 0.2s;
 
         &:hover {
