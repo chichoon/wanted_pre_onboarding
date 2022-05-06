@@ -27,10 +27,6 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   .dropdownBottom {
@@ -42,6 +38,7 @@
     border: 1px solid colors.$GRAYA;
     border-radius: 0.3rem;
     box-shadow: 0 0 0.5rem colors.$BLACK20P;
+
     .searchInput {
       display: flex;
       flex-direction: row;

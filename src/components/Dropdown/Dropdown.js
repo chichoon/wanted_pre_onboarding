@@ -53,7 +53,7 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
               else if (v.toLowerCase().includes(searchInput)) return v;
             })
             .map((v, i) => (
-              <li key={i} onClick={() => handleListClick(v)}>
+              <li key={`dropdown-list-${i}`} onClick={() => handleListClick(v)}>
                 {v}
               </li>
             ))}
