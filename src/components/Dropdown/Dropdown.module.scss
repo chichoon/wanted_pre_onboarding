@@ -1,3 +1,5 @@
+@use '/src/styles/constants/colors';
+
 .dropdownDiv {
   display: flex;
   flex-direction: column;
@@ -14,7 +16,7 @@
     height: 2rem;
     padding: 0.2rem 0.3rem;
     background-color: #fafafa;
-    border: 1px solid #aaaaaa;
+    border: 1px solid colors.$GRAYA;
     border-radius: 0.3rem;
 
     .dropdownTopHeader {
@@ -34,5 +36,68 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .dropdownBottom {
+    width: 12rem;
+    height: fit-content;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid colors.$GRAYA;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.5rem colors.$SHADOW_GRAY;
+
+    .searchInput {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid colors.$GRAYA;
+
+      .searchIcon {
+        width: 1rem;
+        padding: 0.5rem;
+      }
+
+      input {
+        width: 9rem;
+        padding: 0.6rem 1rem 0.6rem 0;
+        font-size: 0.9rem;
+        color: colors.$GRAY3;
+        border: none;
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .divList {
+      height: 10rem;
+      overflow-y: scroll;
+
+      & > div {
+        width: 9rem;
+        padding: 0.6rem 1rem 0.6rem 2rem;
+        overflow: hidden;
+        font-size: 0.8rem;
+        color: colors.$GRAY6;
+        text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background-color: white;
+        transition: background-color 0.2s;
+
+        &:hover {
+          cursor: pointer;
+          background-color: colors.$GRAYE;
+        }
+      }
+    }
+  }
+
+  .ifHidden {
+    display: none;
   }
 }
