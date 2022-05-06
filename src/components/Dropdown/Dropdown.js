@@ -4,7 +4,7 @@ import { useClickAway } from 'react-use';
 import cx from 'classnames';
 
 import styles from './Dropdown.module.scss';
-import { SearchIcon, TopArrow } from '../../assets/svgs';
+import { SearchIcon, TopArrowIcon } from '../../assets/svgs';
 
 const Dropdown = ({ dropdownArr, setFunc }) => {
   const [selectedStr, setSelectedStr] = useState(dropdownArr[0]);
@@ -31,7 +31,7 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
     <div className={styles.dropdownDiv}>
       <button className={styles.dropdownTop} onClick={handleTopClick}>
         <span className={styles.dropdownTopSpan}>{selectedStr}</span>
-        <TopArrow className={styles.svgs} />
+        <TopArrowIcon className={styles.svgs} />
       </button>
       <div
         className={cx(styles.dropdownBottom, { [styles.isHidden]: isHidden })}
