@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
-import Styled from 'styled-components';
-import EmailInput from './EmailInput';
+import cx from 'classnames';
+
 import PasswordInput from './PasswordInput';
+import styles from './Input.module.scss';
+import { CheckIcon } from '../../assets/svgs';
 
 const Input = ({ setFuncEmail, setFuncPassword }) => {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
+  const [ifEmailValid, setIfEmailValid] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
+
+  const handleEmailChange = e => {
+    const regex = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    setInputEmail(e.target.value);
+    if (e.target.value.match(regex)) setIfEmailValid(true);
+    else setIfEmailValid(false);
+  };
+
+  const handleEmailBlur = e => {
+    e.preventDefault();
+    setIsHidden(!ifEmailValid && inputEmail.length > 0 ? true : false);
+  };
 
   useEffect(() => {
     setFuncEmail(inputEmail);
@@ -14,89 +30,32 @@ const Input = ({ setFuncEmail, setFuncPassword }) => {
   }, [inputEmail, inputPassword]);
 
   return (
-    <InputWrapper>
-      <EmailInput
-        className="input-div"
-        inputEmail={inputEmail}
-        setInputEmail={setInputEmail}
-      />
+    <div className={styles.inputDiv}>
+      <div className={styles.inputContainer}>
+        <label htmlFor="email">E-mail</label>
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            value={inputEmail}
+            onChange={handleEmailChange}
+            onBlur={handleEmailBlur}
+          />
+          <label className={cx({ isHidden: isHidden })}>
+            Invalid E-mail address.
+          </label>
+          <CheckIcon />
+        </div>
+      </div>
+
       <PasswordInput
         className="input-div passwd"
         inputPassword={inputPassword}
         setInputPassword={setInputPassword}
       />
-    </InputWrapper>
+    </div>
   );
 };
-
-const InputWrapper = Styled.div`
-  width: 15rem;
-  height: 7rem;
-  padding: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  .input-div {
-    & > div {
-      position: relative;
-    }
-
-    label {
-      width: 14rem;
-      padding: 0.3rem;
-
-      text-align: left;
-      font-size: 0.5rem;
-      color: rgba(0, 0, 0, 0.5);
-
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
-    }
-
-    label:nth-child(2) {
-      color: rgba(200, 0, 0, 0.7);
-    }
-
-    input {
-      width: 13rem;
-      height: 2rem;
-      padding: 0 0.5rem;
-      padding-right: 2rem;
-      background-color: #EEE;
-
-      border: 1px solid #AAA;
-      border-radius: 0.2rem;
-    }
-  }
-
-  .input-div:nth-child(1) {
-    margin-bottom: 0.5rem;
-  }
-
-  input:focus {
-    outline: none;
-    border: 1px solid black;
-  }
-
-  svg {
-    width: 1rem;
-    height: 1rem;
-    color: black;
-
-    position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
-
-    transition: fill 0.2s;
-  }
-
-  .passwd svg:hover {
-      cursor: pointer;
-  }
-`;
 
 export default Input;
