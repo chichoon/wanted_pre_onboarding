@@ -12,17 +12,11 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
   const [searchInput, setSearchInput] = useState('');
   const ref = useRef(null);
 
-  const handleOnChange = e => {
-    setSearchInput(e.target.value);
-  };
+  const handleOnChange = e => setSearchInput(e.target.value);
 
-  const handleTopClick = e => {
-    e.preventDefault();
-    setIsHidden(isHidden ? false : true);
-  };
+  const handleTopClick = () => setIsHidden(false);
 
-  const handleListClick = (e, v) => {
-    e.preventDefault();
+  const handleListClick = v => {
     setSelectedStr(v);
     setIsHidden(true);
   };
@@ -31,21 +25,19 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
     setFunc(selectedStr);
   }, [selectedStr]);
 
-  useClickAway(ref, () => {
-    console.log('clicked away');
-    setIsHidden(true);
-  });
+  useClickAway(ref, () => setIsHidden(true));
 
   return (
     <div className={styles.dropdownDiv}>
-      <div className={styles.dropdownTop} onClick={handleTopClick}>
+      <button className={styles.dropdownTop} onClick={handleTopClick}>
         <div className={styles.dropdownTopHeader}>{selectedStr}</div>
         <TopArrow className={styles.topArrow} />
-      </div>
-      <div className={styles.dropdownBottom} ref={ref}>
-        <div
-          className={cx(styles.searchInput, { [styles.isHidden]: isHidden })}
-        >
+      </button>
+      <div
+        className={cx(styles.dropdownBottom, { [styles.isHidden]: isHidden })}
+        ref={ref}
+      >
+        <div className={styles.searchInput}>
           <SearchIcon className={styles.searchIcon} />
           <input
             type="text"
@@ -61,7 +53,7 @@ const Dropdown = ({ dropdownArr, setFunc }) => {
               else if (v.toLowerCase().includes(searchInput)) return v;
             })
             .map((v, i) => (
-              <li key={i} onClick={e => handleListClick(e, v)}>
+              <li key={i} onClick={() => handleListClick(v)}>
                 {v}
               </li>
             ))}
