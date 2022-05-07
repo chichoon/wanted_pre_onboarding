@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 
 import cx from 'classnames'
 
-import SliderBody from './SliderBody'
 import styles from './Slider.module.scss'
 import { CircleIcon } from '../../assets/svgs'
 
@@ -33,11 +32,7 @@ function Slider({ setFunc }) {
           <div className={styles.sliderDot}>
             <CircleIcon />
           </div>
-          <button
-            type='button'
-            className={styles.sliderIndicator}
-            onClick={() => handleButtonClick(SLIDER_CLASSNAMES[i])}
-          >
+          <button type='button' className={styles.sliderIndicator} onClick={() => handleButtonClick(SLIDER_VALUES[i])}>
             {SLIDER_VALUES[i]}%
           </button>
         </li>
@@ -59,6 +54,7 @@ function Slider({ setFunc }) {
       <section className={styles.sliderBody}>
         <div className={styles.sliderBodyFront}>
           <input
+            className={styles.sliderInput}
             type='range'
             value={sliderValue}
             min='1'
@@ -71,7 +67,6 @@ function Slider({ setFunc }) {
         </div>
         <div className={styles.sliderBodyBack}>{setBackgroundDiv()}</div>
       </section>
-      <SliderBody sliderValue={sliderValue} setSliderValue={setSliderValue} />
     </div>
   )
 }

@@ -67,6 +67,7 @@
 .sliderBackElem {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 3.6rem;
   height: 4rem;
   list-style: none;
@@ -107,51 +108,45 @@
 
   &.slider1P {
     .sliderDot {
-      margin-left: -0.2rem;
+      margin-left: -2.4rem;
     }
 
     .sliderIndicator {
-      margin-left: -0.6rem;
+      margin-left: -2.4rem;
     }
   }
 
   &.slider25P {
     .sliderDot {
-      margin-left: 0.72rem;
+      margin-left: -1.2rem;
     }
 
     .sliderIndicator {
-      margin-left: 0.22rem;
+      margin-left: -1.2rem;
     }
   }
 
   &.slider50P {
-    .sliderDot {
-      margin-left: 1.44rem;
-    }
-
-    .sliderIndicator {
-      margin-left: 0.94rem;
-    }
+    align-items: center;
   }
 
   &.slider75P {
     .sliderDot {
-      margin-left: 2.16rem;
+      margin-left: 1.2rem;
     }
 
     .sliderIndicator {
-      margin-left: 1.66rem;
+      margin-left: 1.2rem;
     }
   }
 
   &.slider100P {
     .sliderDot {
-      margin-left: 2.8rem;
+      margin-left: 2.4rem;
     }
 
     .sliderIndicator {
-      margin-left: 2.3rem;
+      margin-left: 2.4rem;
     }
   }
 
@@ -162,11 +157,11 @@
   }
 }
 
-input {
+.sliderInput {
   -webkit-appearance: none;
   width: 100%;
   height: 0.3rem;
-  margin: 0;
+  margin: 0 0.3rem;
   background-color: transparent;
 
   &:focus {
