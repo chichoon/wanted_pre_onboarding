@@ -42,7 +42,7 @@ function Input({ setFuncEmail, setFuncPassword }) {
 
   return (
     <div className={styles.inputDiv}>
-      <div className={styles.inputContainer}>
+      <section className={cx(styles.inputContainer, styles.inputTop)}>
         <label htmlFor='email'>E-mail</label>
         <div>
           <input
@@ -58,8 +58,8 @@ function Input({ setFuncEmail, setFuncPassword }) {
           </label>
           <CheckIcon className={cx(styles.checkIcon, { [styles.isEmailValid]: isEmailValid })} />
         </div>
-      </div>
-      <div className={styles.inputContainer}>
+      </section>
+      <section className={styles.inputContainer}>
         <label htmlFor='password'>Password</label>
         <div>
           <input
@@ -73,7 +73,7 @@ function Input({ setFuncEmail, setFuncPassword }) {
             <EyeIcon className={cx({ [styles.ifHidePassword]: !ifHidePassword })} />
           </button>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
