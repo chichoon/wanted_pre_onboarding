@@ -35,20 +35,18 @@ function Input({ setFuncEmail, setFuncPassword }) {
     <div className={styles.inputDiv}>
       <div className={styles.inputContainer}>
         <label htmlFor='email'>E-mail</label>
-        <div>
-          <input
-            type='email'
-            name='email'
-            placeholder='E-mail'
-            value={inputEmail}
-            onChange={handleEmailChange}
-            onBlur={handleEmailBlur}
-          />
-          <label htmlFor='email' className={cx(styles.labelInvalid, { [styles.isHidden]: isHidden })}>
-            Invalid E-mail address.
-          </label>
-          <CheckIcon className={cx({ [styles.isEmailValid]: isEmailValid })} />
-        </div>
+        <input
+          type='email'
+          name='email'
+          placeholder='E-mail'
+          value={inputEmail}
+          onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
+        />
+        <label htmlFor='email' className={cx(styles.labelInvalid, { [styles.isHidden]: isHidden })}>
+          Invalid E-mail address.
+        </label>
+        <CheckIcon className={cx({ [styles.isEmailValid]: isEmailValid })} />
       </div>
 
       <PasswordInput className='input-div passwd' inputPassword={inputPassword} setInputPassword={setInputPassword} />
