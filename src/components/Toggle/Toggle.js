@@ -5,10 +5,10 @@ import cx from 'classnames'
 import styles from './Toggle.module.scss'
 
 function Toggle({ firstString, secondString, setFunc }) {
-  const [isSelected, setisSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState(false)
 
-  const handleOnClick = () => {
-    setisSelected((prevState) => !prevState)
+  const handleToggleClick = () => {
+    setIsSelected((prevState) => !prevState)
   }
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Toggle({ firstString, secondString, setFunc }) {
 
   return (
     <div className={styles.toggleDiv}>
-      <button type='button' className={styles.toggleParent} onClick={handleOnClick}>
+      <button type='button' className={styles.toggleParent} onClick={handleToggleClick}>
         <div className={styles.toggleFront}>
           <div className={cx(styles.toggleElement, { [styles.selected]: !isSelected })}>{firstString}</div>
           <div className={cx(styles.toggleElement, { [styles.selected]: isSelected })}>{secondString}</div>
