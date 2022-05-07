@@ -1,0 +1,57 @@
+@use '/src/styles/constants/colors';
+
+.tabDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+  height: 3rem;
+  padding: 0.3rem;
+
+  & > section {
+    width: 25rem;
+  }
+
+  .tabTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 2.7rem;
+  }
+
+  .tabBottom {
+    height: 0.3rem;
+    background-color: colors.$GRAYD;
+
+    .tabBar {
+      height: 0.3rem;
+      background-color: colors.$REPO_THEME;
+      transition: margin-left 0.2s;
+    }
+  }
+}
+
+.selectorDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  color: colors.$BLACK20P;
+  background-color: white;
+  border: none;
+  transition: color 0.2s;
+
+  &.selectedDiv {
+    color: colors.$BLACK;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &:not(.selectedDiv) {
+      color: colors.$BLACK50P;
+    }
+  }
+}
