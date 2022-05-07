@@ -28,6 +28,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .dropdownBottom {
@@ -79,6 +83,11 @@
       border: none;
       transition: background-color 0.2s;
     }
+
+    button:hover {
+      cursor: pointer;
+      background-color: colors.$GRAYE;
+    }
   }
 }
 
@@ -86,13 +95,8 @@
   display: none;
 }
 
-.svgs {
+.dropdownSvgs {
   width: 1rem;
   padding: 0.5rem;
   fill: colors.$GRAY6;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: colors.$GRAYE;
 }

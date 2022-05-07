@@ -6,17 +6,17 @@ import cx from 'classnames'
 import styles from './Dropdown.module.scss'
 import { SearchIcon, TopArrowIcon } from '../../assets/svgs'
 
-function Dropdown ({ dropdownArr, setFunc }) {
+function Dropdown({ dropdownArr, setFunc }) {
   const [selectedStr, setSelectedStr] = useState(dropdownArr[0])
   const [isHidden, setIsHidden] = useState(true)
   const [searchInput, setSearchInput] = useState('')
   const ref = useRef(null)
 
-  const handleOnChange = e => setSearchInput(e.target.value)
+  const handleOnChange = (e) => setSearchInput(e.target.value)
 
   const handleTopClick = () => setIsHidden(false)
 
-  const handleListClick = v => {
+  const handleListClick = (v) => {
     setSelectedStr(v)
     setIsHidden(true)
   }
@@ -29,33 +29,25 @@ function Dropdown ({ dropdownArr, setFunc }) {
 
   return (
     <div className={styles.dropdownDiv}>
-      <button type="button" className={styles.dropdownTop} onClick={handleTopClick}>
+      <button type='button' className={styles.dropdownTop} onClick={handleTopClick}>
         <span className={styles.dropdownTopSpan}>{selectedStr}</span>
-        <TopArrowIcon className={styles.svgs} />
+        <TopArrowIcon className={styles.dropdownSvgs} />
       </button>
-      <div
-        className={cx(styles.dropdownBottom, { [styles.isHidden]: isHidden })}
-        ref={ref}
-      >
+      <div className={cx(styles.dropdownBottom, { [styles.isHidden]: isHidden })} ref={ref}>
         <div className={styles.searchInput}>
-          <SearchIcon className={styles.svgs} />
-          <input
-            type="text"
-            onChange={handleOnChange}
-            value={searchInput}
-            placeholder="Search Symbol"
-          />
+          <SearchIcon className={styles.dropdownSvgs} />
+          <input type='text' onChange={handleOnChange} value={searchInput} placeholder='Search Symbol' />
         </div>
         <ul className={styles.selectList}>
           {dropdownArr
-            .filter(v => {
+            .filter((v) => {
               if (searchInput === '') return v
               if (v.toLowerCase().includes(searchInput)) return v
               return 0
             })
             .map((v) => (
               <li key={`dropdown-list-${v}`}>
-                <button type="button" onClick={() => handleListClick(v)}>
+                <button type='button' onClick={() => handleListClick(v)}>
                   {v}
                 </button>
               </li>

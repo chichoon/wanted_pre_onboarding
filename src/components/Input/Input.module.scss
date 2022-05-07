@@ -76,6 +76,10 @@
       .ifHidePassword {
         fill: colors.$REPO_THEME;
       }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
