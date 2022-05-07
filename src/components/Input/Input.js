@@ -5,6 +5,8 @@ import cx from 'classnames'
 import styles from './Input.module.scss'
 import { CheckIcon, EyeIcon } from '../../assets/svgs'
 
+const REGEX = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+
 function Input({ setFuncEmail, setFuncPassword }) {
   const [inputEmail, setInputEmail] = useState('')
   const [inputPassword, setInputPassword] = useState('')
@@ -13,9 +15,8 @@ function Input({ setFuncEmail, setFuncPassword }) {
   const [isHidden, setIsHidden] = useState(true)
 
   const handleEmailChange = (e) => {
-    const regex = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
     setInputEmail(e.target.value)
-    if (e.target.value.match(regex)) {
+    if (e.target.value.match(REGEX)) {
       setisEmailValid(true)
       setIsHidden(true)
     } else setisEmailValid(false)
