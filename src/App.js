@@ -1,9 +1,8 @@
-import { React, useState } from 'react'
+import { useState } from 'react'
 
-import Styled from 'styled-components'
 import { Dropdown, Input, Slider, Tab, Toggle } from './components'
 
-import './App.css'
+import styles from './App.module.scss'
 
 function App() {
   const [toggleSelected, setToggleSelected] = useState('')
@@ -14,43 +13,33 @@ function App() {
   const [dropdownSelected, setDropdownSelected] = useState('')
 
   return (
-    <div className='App'>
-      <ComponentWrapper>
+    <div className={styles.app}>
+      <section className={styles.appSection}>
         <Toggle firstString='기본' secondString='상세' setFunc={setToggleSelected} />
-        <div className='component-value'>Selected: {toggleSelected}</div>
-      </ComponentWrapper>
-      <ComponentWrapper>
+        <h4 className={styles.componentValue}>Selected: {toggleSelected}</h4>
+      </section>
+      <section className={styles.appSection}>
         <Tab selectorArr={['감자', '고구마', '카레라이스']} setFunc={setTabSelected} />
-        <div className='component-value'>Selected: {tabSelected}</div>
-      </ComponentWrapper>
-      <ComponentWrapper>
+        <h4 className={styles.componentValue}>Selected: {tabSelected}</h4>
+      </section>
+      <section className={styles.appSection}>
         <Slider setFunc={setSliderValue} />
-        <div className='component-value'>Value: {sliderValue}</div>
-      </ComponentWrapper>
-      <ComponentWrapper>
+        <h4 className={styles.componentValue}>Value: {sliderValue}</h4>
+      </section>
+      <section className={styles.appSection}>
         <Input setFuncEmail={setInputEmail} setFuncPassword={setInputPassword} />
-        <div className='component-value'>Email: {inputEmail}</div>
-        <div className='component-value'>Password: {inputPassword}</div>
-      </ComponentWrapper>
-      <ComponentWrapper>
+        <h4 className={styles.componentValue}>Email: {inputEmail}</h4>
+        <h4 className={styles.componentValue}>Password: {inputPassword}</h4>
+      </section>
+      <section className={styles.appSection}>
         <Dropdown
           dropdownArr={['BTCUSD.PERP', 'BCHUSD.PERP', 'ETHUSD.PERP', 'BANUSD.PERP', 'XPRUSD.PERP']}
           setFunc={setDropdownSelected}
         />
-        <div className='component-value'>Selected: {dropdownSelected} </div>
-      </ComponentWrapper>
+        <h4 className={styles.componentValue}>Selected: {dropdownSelected} </h4>
+      </section>
     </div>
   )
 }
-
-const ComponentWrapper = Styled.div`
-  margin: 0.5rem;
-  margin-bottom: 1rem;
-
-  & > .component-value {
-    margin: 0.5rem;
-    overflow: hidden;
-  }
-`
 
 export default App

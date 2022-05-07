@@ -1,0 +1,19 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  text-align: center;
+}
+
+.appSection {
+  margin: 2rem;
+  margin-bottom: 1rem;
+
+  .componentValue {
+    margin: 0.5rem;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+}
