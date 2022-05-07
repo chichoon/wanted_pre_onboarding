@@ -108,20 +108,14 @@
   }
 
   &.slider1P {
-    .sliderDot {
-      margin-left: -2.4rem;
-    }
-
+    .sliderDot,
     .sliderIndicator {
       margin-left: -2.4rem;
     }
   }
 
   &.slider25P {
-    .sliderDot {
-      margin-left: -1.2rem;
-    }
-
+    .sliderDot,
     .sliderIndicator {
       margin-left: -1.2rem;
     }
@@ -132,20 +126,14 @@
   }
 
   &.slider75P {
-    .sliderDot {
-      margin-left: 1.2rem;
-    }
-
+    .sliderDot,
     .sliderIndicator {
       margin-left: 1.2rem;
     }
   }
 
   &.slider100P {
-    .sliderDot {
-      margin-left: 2.4rem;
-    }
-
+    .sliderDot,
     .sliderIndicator {
       margin-left: 2.4rem;
     }
