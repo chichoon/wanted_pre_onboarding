@@ -1,0 +1,117 @@
+@use '/src/styles/constants/colors';
+
+.sliderDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  padding: 0.3rem;
+
+  .sliderHead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    width: 18rem;
+    height: 3rem;
+    background-color: colors.$GRAYE;
+    border: 1px solid colors.$GRAYA;
+    border-radius: 0.3rem;
+
+    .sliderValue {
+      width: 12rem;
+      padding: 0.5rem 0.6rem;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .sliderPercent {
+      margin: 0 0.5rem;
+      color: colors.$BLACK50P;
+    }
+  }
+}
+
+.sliderBody {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 18rem;
+  height: 4rem;
+  margin: 0.5rem 0.2rem;
+
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+  }
+
+  .sliderBodyFront {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+  }
+
+  .sliderBodyBack {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+  }
+}
+
+input {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.3rem;
+  margin: 0;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 0.3rem;
+    border-radius: 0.1rem;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    margin-top: -0.3rem;
+    cursor: pointer;
+    background: colors.$REPO_THEME;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0.2rem colors.$BLACK50P;
+  }
+
+  &::-moz-range-track {
+    height: 0.3rem;
+    border-radius: 0.1rem;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    margin-top: -0.3rem;
+    cursor: pointer;
+    background: colors.$REPO_THEME;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0.2rem colors.$BLACK50P;
+  }
+
+  input[type='range']::-ms-thumb {
+    margin: 0;
+  }
+}
