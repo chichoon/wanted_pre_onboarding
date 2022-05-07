@@ -1,3 +1,5 @@
+@use '/src/styles/constants/colors';
+
 .inputDiv {
   display: flex;
   flex-direction: column;
@@ -13,19 +15,22 @@
     }
 
     label {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
       width: 14rem;
       padding: 0.3rem;
       font-size: 0.5rem;
       color: rgba(0, 0, 0, 50%);
       text-align: left;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
     }
 
-    label:nth-child(2) {
-      color: rgba(200, 0, 0, 0.7);
+    .labelInvalid {
+      color: colors.$RED70P;
+    }
+
+    .isHidden {
+      display: none;
     }
 
     input {
@@ -33,31 +38,29 @@
       height: 2rem;
       padding: 0 0.5rem;
       padding-right: 2rem;
-      background-color: #eee;
-
-      border: 1px solid #aaa;
+      background-color: colors.$GRAYE;
+      border: 1px solid colors.$GRAYA;
       border-radius: 0.2rem;
     }
   }
 
-  .input-div:nth-child(1) {
+  &:first-child {
     margin-bottom: 0.5rem;
   }
 
   input:focus {
+    border: 1px solid colors.$BLACK;
     outline: none;
-    border: 1px solid black;
   }
 
   svg {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
     width: 1rem;
     height: 1rem;
-    color: black;
-
-    position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
-
+    color: colors.$BLACK;
+    fill: colors.$GRAYD;
     transition: fill 0.2s;
   }
 
@@ -65,7 +68,7 @@
     cursor: pointer;
   }
 
-  .isHidden {
-    display: none;
+  .isEmailValid {
+    fill: colors.$REPO_THEME;
   }
 }
