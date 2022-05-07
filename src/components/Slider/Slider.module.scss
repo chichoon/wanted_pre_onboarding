@@ -64,6 +64,104 @@
   }
 }
 
+.sliderBackElem {
+  display: flex;
+  flex-direction: column;
+  width: 3.6rem;
+  height: 4rem;
+  list-style: none;
+
+  .sliderDot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 2rem;
+
+    svg {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      fill: colors.$GRAYD;
+    }
+  }
+
+  .sliderIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.5rem;
+    color: colors.$WHITE;
+    background-color: colors.$GRAYA;
+    border: none;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: colors.$REPO_THEME;
+    }
+  }
+
+  &.slider1P {
+    .sliderDot {
+      margin-left: -0.2rem;
+    }
+
+    .sliderIndicator {
+      margin-left: -0.6rem;
+    }
+  }
+
+  &.slider25P {
+    .sliderDot {
+      margin-left: 0.72rem;
+    }
+
+    .sliderIndicator {
+      margin-left: 0.22rem;
+    }
+  }
+
+  &.slider50P {
+    .sliderDot {
+      margin-left: 1.44rem;
+    }
+
+    .sliderIndicator {
+      margin-left: 0.94rem;
+    }
+  }
+
+  &.slider75P {
+    .sliderDot {
+      margin-left: 2.16rem;
+    }
+
+    .sliderIndicator {
+      margin-left: 1.66rem;
+    }
+  }
+
+  &.slider100P {
+    .sliderDot {
+      margin-left: 2.8rem;
+    }
+
+    .sliderIndicator {
+      margin-left: 2.3rem;
+    }
+  }
+
+  &.sliderFilled {
+    svg {
+      fill: colors.$REPO_THEME;
+    }
+  }
+}
+
 input {
   -webkit-appearance: none;
   width: 100%;
@@ -89,7 +187,7 @@ input {
     margin-top: -0.3rem;
     cursor: pointer;
     background: colors.$REPO_THEME;
-    border: 3px solid white;
+    border: 3px solid colors.$WHITE;
     border-radius: 50%;
     box-shadow: 0 0 0.2rem colors.$BLACK50P;
   }
@@ -106,7 +204,7 @@ input {
     margin-top: -0.3rem;
     cursor: pointer;
     background: colors.$REPO_THEME;
-    border: 3px solid white;
+    border: 3px solid colors.$WHITE;
     border-radius: 50%;
     box-shadow: 0 0 0.2rem colors.$BLACK50P;
   }

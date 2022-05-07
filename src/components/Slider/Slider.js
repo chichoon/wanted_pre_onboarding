@@ -21,12 +21,14 @@ function Slider({ setFunc }) {
   }
 
   const setBackgroundDiv = () => {
-    let arr = []
+    const arr = []
     for (let i = 0; i < 5; i += 1) {
       arr.push(
         <li
           key={`slider-value-${SLIDER_VALUES[i]}`}
-          className={cx(SLIDER_CLASSNAMES[i], styles.sliderBackElem, { [styles.sliderFilled]: sliderValue >= i })}
+          className={cx(styles.sliderBackElem, SLIDER_CLASSNAMES[i], {
+            [styles.sliderFilled]: sliderValue >= SLIDER_VALUES[i],
+          })}
         >
           <div className={styles.sliderDot}>
             <CircleIcon />
@@ -41,6 +43,7 @@ function Slider({ setFunc }) {
         </li>
       )
     }
+    return arr
   }
 
   useEffect(() => {
@@ -62,7 +65,7 @@ function Slider({ setFunc }) {
             max='100'
             onChange={handleSliderChange}
             style={{
-              background: `linear-gradient(to right, #699092 0%, #699092 ${sliderValue}%, #cccccc ${sliderValue}%, #cccccc 100%)`,
+              background: `linear-gradient(to right, #699092 0%, #699092 ${sliderValue}%, #dddddd ${sliderValue}%, #dddddd 100%)`,
             }}
           />
         </div>
