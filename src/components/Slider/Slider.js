@@ -1,63 +1,76 @@
-import { React, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import Styled from 'styled-components';
+import cx from 'classnames'
 
-import SliderBody from './SliderBody';
+import SliderBody from './SliderBody'
+import styles from './Slider.module.scss'
+import { CircleIcon } from '../../assets/svgs'
 
-const Slider = ({ setFunc }) => {
-  const [sliderValue, setSliderValue] = useState(0);
+const SLIDER_VALUES = [1, 25, 50, 75, 100]
+const SLIDER_CLASSNAMES = [styles.slider1P, styles.slider25P, styles.slider50P, styles.slider75P, styles.slider100P]
 
-  useEffect(() => {
-    setFunc(sliderValue);
-  }, [sliderValue]);
+function Slider({ setFunc }) {
+  const [sliderValue, setSliderValue] = useState(1)
 
-  return (
-    <SliderWrapper>
-      <div className="slider-head">
-        <div>{sliderValue}</div>
-        <div>%</div>
-      </div>
-      <SliderBody sliderValue={sliderValue} setSliderValue={setSliderValue} />
-    </SliderWrapper>
-  );
-};
+  const handleSliderChange = (e) => {
+    setSliderValue(e.target.value)
+  }
 
-const SliderWrapper = Styled.div`
-  width: 20rem;
+  const handleButtonClick = (v) => {
+    setSliderValue(v)
+  }
 
-  padding: 0.3rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .slider-head {
-    width: 18rem;
-    height: 3rem;
-    background-color: #EEE;
-
-    border: 1px solid #AAA;
-    border-radius: 0.3rem;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-
-    div:nth-child(1) {
-      width: 12rem;
-
-      padding: 0.5rem 0.6rem;
-      text-align: right;
-      font-weight: 700;
-    }
-
-    div:nth-child(2) {
-      margin: 0 0.5rem;
-      color: rgba(0, 0, 0, 0.5);
+  const setBackgroundDiv = () => {
+    let arr = []
+    for (let i = 0; i < 5; i += 1) {
+      arr.push(
+        <li
+          key={`slider-value-${SLIDER_VALUES[i]}`}
+          className={cx(SLIDER_CLASSNAMES[i], styles.sliderBackElem, { [styles.sliderFilled]: sliderValue >= i })}
+        >
+          <div className={styles.sliderDot}>
+            <CircleIcon />
+          </div>
+          <button
+            type='button'
+            className={styles.sliderIndicator}
+            onClick={() => handleButtonClick(SLIDER_CLASSNAMES[i])}
+          >
+            {SLIDER_VALUES[i]}%
+          </button>
+        </li>
+      )
     }
   }
-`;
 
-export default Slider;
+  useEffect(() => {
+    setFunc(sliderValue)
+  }, [sliderValue, setFunc])
+
+  return (
+    <div className={styles.sliderDiv}>
+      <section className={styles.sliderHead}>
+        <span className={styles.sliderValue}>{sliderValue}</span>
+        <span className={styles.sliderPercent}>%</span>
+      </section>
+      <section className={styles.sliderBody}>
+        <div className={styles.sliderBodyFront}>
+          <input
+            type='range'
+            value={sliderValue}
+            min='1'
+            max='100'
+            onChange={handleSliderChange}
+            style={{
+              background: `linear-gradient(to right, #699092 0%, #699092 ${sliderValue}%, #cccccc ${sliderValue}%, #cccccc 100%)`,
+            }}
+          />
+        </div>
+        <div className={styles.sliderBodyBack}>{setBackgroundDiv()}</div>
+      </section>
+      <SliderBody sliderValue={sliderValue} setSliderValue={setSliderValue} />
+    </div>
+  )
+}
+
+export default Slider
