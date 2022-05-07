@@ -1,95 +1,33 @@
-import { React, useEffect, useState } from 'react';
-import Styled from 'styled-components';
+import { useEffect, useState } from 'react'
 
-const Toggle = ({ firstString, secondString, setFunc }) => {
-  const [ifToggle, setIfToggle] = useState(false);
+import cx from 'classnames'
 
-  const handleOnClick = e => {
-    e.preventDefault();
-    setIfToggle(ifToggle ? false : true);
-  };
+import styles from './Toggle.module.scss'
+
+function Toggle({ firstString, secondString, setFunc }) {
+  const [isSelected, setisSelected] = useState(false)
+
+  const handleOnClick = () => {
+    setisSelected((prevState) => !prevState)
+  }
 
   useEffect(() => {
-    setFunc(ifToggle ? secondString : firstString);
-  }, [ifToggle]);
+    setFunc(isSelected ? secondString : firstString)
+  }, [isSelected, firstString, secondString, setFunc])
 
   return (
-    <ToggleWrapper toggle={ifToggle}>
-      <div className="selector-parent" onClick={handleOnClick}>
-        <div className="front">
-          <div className={!ifToggle ? 'selected' : ''}>{firstString}</div>
-          <div className={ifToggle ? 'selected' : ''}>{secondString}</div>
+    <div className={styles.toggleDiv}>
+      <button type='button' className={styles.toggleParent} onClick={handleOnClick}>
+        <div className={styles.toggleFront}>
+          <div className={cx(styles.toggleElement, { [styles.selected]: !isSelected })}>{firstString}</div>
+          <div className={cx(styles.toggleElement, { [styles.selected]: isSelected })}>{secondString}</div>
         </div>
-        <div className="back">
-          <div></div>
+        <div className={styles.toggleBack}>
+          <div className={cx(styles.toggleThumb, { [styles.moved]: isSelected })} />
         </div>
-      </div>
-    </ToggleWrapper>
-  );
-};
-
-const ToggleWrapper = Styled.div`
-  width: 20rem;
-  height: 3rem;
-
-  padding: 0.2rem;
-  border-radius: 2rem;
-
-  background-color: lightgray;
-
-  .selector-parent {
-    position: relative;
-    z-index: 3;
-
-    & > div {
-      width: 20rem;
-      height: 3rem;
-
-      position: absolute;
-      left: 0px;
-      top: 0px;
-    }
-
-    .back {
-      z-index: 1;
-      & > div {
-        width: 50%;
-        height: 3rem;
-
-        border-radius: 2rem;
-        margin-left: ${props => (props.toggle ? '10rem' : '0')};
-
-        background-color: white;
-        transition: margin-left 0.2s;
-      }
-    }
-
-    .front {
-      z-index: 2;
-
-      display: flex;
-      flex-direction: row;
-
-      & > div {
-        width: 50%;
-        height: inherit;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        opacity: 30%;
-        font-weight: 700;
-
-        &.selected {
-          opacity: 100%;
-        }
-      }
-    }
-
-&:hover {
-  cursor: pointer;
+      </button>
+    </div>
+  )
 }
-`;
 
-export default Toggle;
+export default Toggle
