@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import cx from 'classnames'
 
-import PasswordInput from './PasswordInput'
 import styles from './Input.module.scss'
 import { CheckIcon, EyeIcon } from '../../assets/svgs'
 
