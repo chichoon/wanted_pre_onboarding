@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import cx from 'classnames'
+import cx from 'classnames';
 
-import styles from './Tab.module.scss'
+import styles from './Tab.module.scss';
 
 function Tab({ selectorArr, setFunc }) {
-  const selectorLength = selectorArr.length
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const selectorLength = selectorArr.length;
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleOnClick = (index) => {
-    setSelectedIndex(index)
-  }
+    setSelectedIndex(index);
+  };
 
   useEffect(() => {
-    setFunc([selectorArr[selectedIndex]])
-  }, [setFunc, selectorArr, selectedIndex])
+    setFunc([selectorArr[selectedIndex]]);
+  }, [setFunc, selectorArr, selectedIndex]);
 
   return (
     <div className={styles.tabDiv}>
@@ -41,7 +41,7 @@ function Tab({ selectorArr, setFunc }) {
         />
       </section>
     </div>
-  )
+  );
 }
 
-export default Tab
+export default Tab;

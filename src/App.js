@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { Dropdown, Input, Slider, Tab, Toggle } from './components'
+import { Dropdown, Input, Slider, Tab, Toggle } from './components';
 
-import styles from './App.module.scss'
+import styles from './App.module.scss';
 
 function App() {
-  const [toggleSelected, setToggleSelected] = useState('')
-  const [tabSelected, setTabSelected] = useState('')
-  const [sliderValue, setSliderValue] = useState(0)
-  const [inputEmail, setInputEmail] = useState('')
-  const [inputPassword, setInputPassword] = useState('')
-  const [dropdownSelected, setDropdownSelected] = useState('')
+  const [toggleSelected, setToggleSelected] = useState('');
+  const [tabSelected, setTabSelected] = useState('');
+  const [sliderValue, setSliderValue] = useState(0);
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
+  const [dropdownSelected, setDropdownSelected] = useState('');
 
   return (
     <div className={styles.app}>
@@ -39,7 +39,7 @@ function App() {
         <h4 className={styles.componentValue}>Selected: {dropdownSelected} </h4>
       </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

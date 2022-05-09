@@ -1,44 +1,44 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import cx from 'classnames'
+import cx from 'classnames';
 
-import styles from './Input.module.scss'
-import { CheckIcon, EyeIcon } from '../../assets/svgs'
+import styles from './Input.module.scss';
+import { CheckIcon, EyeIcon } from '../../assets/svgs';
 
-const REGEX = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+const REGEX = /[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
 function Input({ setFuncEmail, setFuncPassword }) {
-  const [inputEmail, setInputEmail] = useState('')
-  const [inputPassword, setInputPassword] = useState('')
-  const [ifHidePassword, setIfHidePassword] = useState(true)
-  const [isEmailValid, setisEmailValid] = useState(false)
-  const [isHidden, setIsHidden] = useState(true)
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
+  const [ifHidePassword, setIfHidePassword] = useState(true);
+  const [isEmailValid, setisEmailValid] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   const handleEmailChange = (e) => {
-    setInputEmail(e.target.value)
+    setInputEmail(e.target.value);
     if (e.target.value.match(REGEX)) {
-      setisEmailValid(true)
-      setIsHidden(true)
-    } else setisEmailValid(false)
-  }
+      setisEmailValid(true);
+      setIsHidden(true);
+    } else setisEmailValid(false);
+  };
 
   const handleEmailBlur = () => {
-    if (!isEmailValid && inputEmail.length > 0) setIsHidden(false)
-    else setIsHidden(true)
-  }
+    if (!isEmailValid && inputEmail.length > 0) setIsHidden(false);
+    else setIsHidden(true);
+  };
 
   const handleEyeClick = () => {
-    setIfHidePassword((prevState) => !prevState)
-  }
+    setIfHidePassword((prevState) => !prevState);
+  };
 
   const handlePasswordChange = (e) => {
-    setInputPassword(e.target.value)
-  }
+    setInputPassword(e.target.value);
+  };
 
   useEffect(() => {
-    setFuncEmail(inputEmail)
-    setFuncPassword(inputPassword)
-  }, [inputEmail, inputPassword, setFuncEmail, setFuncPassword])
+    setFuncEmail(inputEmail);
+    setFuncPassword(inputPassword);
+  }, [inputEmail, inputPassword, setFuncEmail, setFuncPassword]);
 
   return (
     <div className={styles.inputDiv}>
@@ -75,7 +75,7 @@ function Input({ setFuncEmail, setFuncPassword }) {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default Input
+export default Input;

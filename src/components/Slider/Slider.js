@@ -1,26 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import cx from 'classnames'
+import cx from 'classnames';
 
-import styles from './Slider.module.scss'
-import { CircleIcon } from '../../assets/svgs'
+import styles from './Slider.module.scss';
+import { CircleIcon } from '../../assets/svgs';
 
-const SLIDER_VALUES = [1, 25, 50, 75, 100]
-const SLIDER_CLASSNAMES = [styles.slider1P, styles.slider25P, styles.slider50P, styles.slider75P, styles.slider100P]
+const SLIDER_VALUES = [1, 25, 50, 75, 100];
+const SLIDER_CLASSNAMES = [styles.slider1P, styles.slider25P, styles.slider50P, styles.slider75P, styles.slider100P];
 
 function Slider({ setFunc }) {
-  const [sliderValue, setSliderValue] = useState(1)
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
-    setSliderValue(e.target.value)
-  }
+    setSliderValue(e.target.value);
+  };
 
   const handleButtonClick = (v) => {
-    setSliderValue(v)
-  }
+    setSliderValue(v);
+  };
 
   const setBackgroundDiv = () => {
-    const arr = []
+    const arr = [];
     for (let i = 0; i < 5; i += 1) {
       arr.push(
         <li
@@ -36,14 +36,14 @@ function Slider({ setFunc }) {
             {SLIDER_VALUES[i]}%
           </button>
         </li>
-      )
+      );
     }
-    return arr
-  }
+    return arr;
+  };
 
   useEffect(() => {
-    setFunc(sliderValue)
-  }, [sliderValue, setFunc])
+    setFunc(sliderValue);
+  }, [sliderValue, setFunc]);
 
   return (
     <div className={styles.sliderDiv}>
@@ -68,7 +68,7 @@ function Slider({ setFunc }) {
         <div className={styles.sliderBodyBack}>{setBackgroundDiv()}</div>
       </section>
     </div>
-  )
+  );
 }
 
-export default Slider
+export default Slider;

@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import cx from 'classnames'
+import cx from 'classnames';
 
-import styles from './Toggle.module.scss'
+import styles from './Toggle.module.scss';
 
 function Toggle({ firstString, secondString, setFunc }) {
-  const [isSelected, setIsSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState(false);
 
   const handleToggleClick = () => {
-    setIsSelected((prevState) => !prevState)
-  }
+    setIsSelected((prevState) => !prevState);
+  };
 
   useEffect(() => {
-    setFunc(isSelected ? secondString : firstString)
-  }, [isSelected, firstString, secondString, setFunc])
+    setFunc(isSelected ? secondString : firstString);
+  }, [isSelected, firstString, secondString, setFunc]);
 
   return (
     <div className={styles.toggleDiv}>
@@ -27,7 +27,7 @@ function Toggle({ firstString, secondString, setFunc }) {
         </div>
       </button>
     </div>
-  )
+  );
 }
 
-export default Toggle
+export default Toggle;
